@@ -1,72 +1,109 @@
 ---
-title: GitBlog 체크리스트 (Quartz + GitHub Pages)
-description: Quartz 공식 방식으로 블로그를 세팅하고 GitHub Actions로 배포할 때 필요한 핵심 체크리스트
+title: gitblog check list
+description: GitHub Pages + Quartz + GitHub Actions로 블로그를 세팅하며 확인한 체크리스트
 date: 2026-03-05
 tags:
   - setup
   - quartz
   - github-pages
   - ci-cd
-socialDescription: Quartz + GitHub Pages + GitHub Actions 배포 체크리스트
 ---
 
-GitBlog를 처음 만들 때 실제로 막히기 쉬운 부분만 남겨 정리한 최종 체크리스트입니다.
+# 1. 초기 생성 / 로컬 준비
 
-## 1) 초기 생성 / 로컬 준비
+- 기본 브랜치는 Quartz `v4` 기준으로 운용
+- Node/NPM 버전은 공식 문서 기준 사용 (`Node v22`, `npm 10.9.2+`)
 
-- Node `v22` 이상 확인 (`node -v`)
-- Quartz 공식 저장소로 시작
+# 2. GitHub 저장소 연결
 
-```bash
+- GitHub에 Public repo 생성 (`README`/`.gitignore`/`LICENSE` 미초기화)
+- 저장소명은 `dreamjh1111.github.io`로 생성
+- 계정당 기본 Pages 사이트는 1개
+
+![[Pasted image 20260305192407.png]]
+
+![[Pasted image 20260305193508.png]]
+
+- 참고: [GitHub Pages 소개](https://docs.github.com/ko/pages/getting-started-with-github-pages/what-is-github-pages)
+
+![[Pasted image 20260305193536.png]]
+
+# 3. 로컬 세팅 이어서
+
+```zsh
+# quartz clone (현재 폴더에 바로 구성)
 git clone https://github.com/jackyzha0/quartz.git .
+
+# install
 npm i
+
+# initialize (node 22+)
 npx quartz create
-```
 
-## 2) GitHub 저장소 준비
-
-- GitHub에서 `dreamjh1111.github.io` 저장소 생성 (Public)
-- 빈 저장소로 생성 (`README`, `.gitignore`, `LICENSE` 자동 생성 끔)
-
-## 3) 원격(remote) 연결 정리
-
-```bash
+# remote 설정
 git remote set-url origin git@github.com:dreamjh1111/dreamjh1111.github.io.git
 git remote set-url upstream https://github.com/jackyzha0/quartz.git
 git remote -v
+
+# 첫 push
+git add .
+git commit -m "Initialize Quartz blog"
+git push -u origin v4
 ```
 
-확인 포인트:
+# 4. GitHub Action 설정
 
-- `origin` -> 내 저장소
-- `upstream` -> `jackyzha0/quartz`
+```yml
+# .github/workflows/deploy.yml
+name: Deploy Quartz site to GitHub Pages
 
-## 4) Quartz 사이트 기본 설정
+on:
+  push:
+    branches:
+      - v4
+  workflow_dispatch:
 
-`quartz.config.ts`에서 최소 3가지를 먼저 맞춤:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
-- `pageTitle`: `Jayden Tech Blog`
-- `baseUrl`: `dreamjh1111.github.io`
-- 기본 테마: 다크 모드 우선(Default Dark)
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
-## 5) GitHub Actions 배포
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-- `.github/workflows/deploy.yml` 1개만 유지
-- 트리거 브랜치(`v4`)로 push 시 자동 배포
-- `Settings > Pages > Source`를 `GitHub Actions`로 설정
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
 
-## 6) 첫 배포 검증
+      - name: Install dependencies
+        run: npm ci
 
-- Actions에서 `build` + `deploy` 성공 확인
-- 사이트 접속: `https://dreamjh1111.github.io`
-- 홈/링크/검색/태그 페이지 정상 동작 확인
+      - name: Build Quartz
+        run: npx quartz build
 
-## 7) 운영 루틴
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
 
-- 새 글 작성 -> `git add/commit/push`
-- push 후 Actions 성공 확인
-- 링크 깨짐, frontmatter 누락, 태그 누락 점검
-
----
-
-다음 글부터는 문서 1개당 주제 1개 원칙으로 운영.
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
