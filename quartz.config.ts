@@ -1,23 +1,36 @@
 import { QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
+import { QuartzTransformerPlugin } from "./quartz/plugins/types"
 
-/**
- * Quartz 4 Configuration
- *
- * See https://quartz.jzhao.xyz/configuration for more information.
- */
+const DefaultDarkMode: QuartzTransformerPlugin = () => ({
+  name: "DefaultDarkMode",
+  externalResources() {
+    return {
+      js: [
+        {
+          loadTime: "beforeDOMReady",
+          contentType: "inline",
+          spaPreserve: true,
+          script: `if (localStorage.getItem("theme") == null) {
+  localStorage.setItem("theme", "dark")
+  document.documentElement.setAttribute("saved-theme", "dark")
+}`,
+        },
+      ],
+    }
+  },
+})
+
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
+    pageTitle: "Jayden Tech Blog",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
-    analytics: {
-      provider: "plausible",
-    },
-    locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    analytics: null,
+    locale: "ko-KR",
+    baseUrl: "dreamjh1111.github.io",
+    ignorePatterns: ["private", "_templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
@@ -55,9 +68,10 @@ const config: QuartzConfig = {
   },
   plugins: {
     transformers: [
+      DefaultDarkMode(),
       Plugin.FrontMatter(),
       Plugin.CreatedModifiedDate({
-        priority: ["frontmatter", "git", "filesystem"],
+        priority: ["frontmatter", "filesystem"],
       }),
       Plugin.SyntaxHighlighting({
         theme: {
@@ -71,7 +85,7 @@ const config: QuartzConfig = {
       Plugin.TableOfContents(),
       Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
       Plugin.Description(),
-      Plugin.Latex({ renderEngine: "katex" }),
+      Plugin.Latex({ renderEngine: "mathjax" }),
     ],
     filters: [Plugin.RemoveDrafts()],
     emitters: [
@@ -88,7 +102,6 @@ const config: QuartzConfig = {
       Plugin.Static(),
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
-      // Comment out CustomOgImages to speed up build time
       Plugin.CustomOgImages(),
     ],
   },
