@@ -15,3 +15,15 @@ code[data-theme*=" "] span {
 [saved-theme="dark"] code[data-theme*=" "] span {
   color: var(--shiki-dark);
 }
+
+/* macOS-style code block: force dark background regardless of theme */
+pre {
+  code[data-theme*=" "] {
+    color: var(--shiki-dark);
+    background-color: transparent;
+  }
+
+  code[data-theme*=" "] span {
+    color: var(--shiki-dark);
+  }
+}

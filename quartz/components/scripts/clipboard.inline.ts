@@ -11,11 +11,33 @@ document.addEventListener("nav", () => {
       const source = (
         codeBlock.dataset.clipboard ? JSON.parse(codeBlock.dataset.clipboard) : codeBlock.innerText
       ).replace(/\n\n/g, "\n")
+
+      // Language label from data-language attribute
+      const lang = codeBlock.getAttribute("data-language") ?? ""
+
+      // Create macOS-style header
+      const header = document.createElement("div")
+      header.className = "code-header"
+
+      const trafficLights = document.createElement("span")
+      trafficLights.className = "traffic-lights"
+      trafficLights.innerHTML =
+        '<span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>'
+
+      const langLabel = document.createElement("span")
+      langLabel.className = "code-lang"
+      langLabel.textContent = lang.toUpperCase()
+
+      header.appendChild(trafficLights)
+      header.appendChild(langLabel)
+
+      // Copy button inside header
       const button = document.createElement("button")
       button.className = "clipboard-button"
       button.type = "button"
       button.innerHTML = svgCopy
       button.ariaLabel = "Copy source"
+
       function onClick() {
         navigator.clipboard.writeText(source).then(
           () => {
@@ -31,7 +53,9 @@ document.addEventListener("nav", () => {
       }
       button.addEventListener("click", onClick)
       window.addCleanup(() => button.removeEventListener("click", onClick))
-      els[i].prepend(button)
+      header.appendChild(button)
+
+      els[i].prepend(header)
     }
   }
 })

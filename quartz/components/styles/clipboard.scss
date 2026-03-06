@@ -1,26 +1,70 @@
-.clipboard-button {
-  position: absolute;
+/* macOS-style code block header */
+.code-header {
   display: flex;
-  float: right;
-  right: 0;
-  padding: 0.4rem;
-  margin: 0.3rem;
-  color: var(--gray);
-  border-color: var(--dark);
-  background-color: var(--light);
-  border: 1px solid;
-  border-radius: 5px;
+  align-items: center;
+  padding: 0.5rem 0.8rem;
+  background: #2d2d30;
+  border-bottom: 1px solid #3e3e42;
+  border-radius: 10px 10px 0 0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.traffic-lights {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot-red {
+  background: #ff5f56;
+}
+
+.dot-yellow {
+  background: #ffbd2e;
+}
+
+.dot-green {
+  background: #27c93f;
+}
+
+.code-lang {
+  flex: 1;
+  text-align: right;
+  font-family: var(--codeFont);
+  font-size: 0.75rem;
+  color: #989b9f;
+  padding-right: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.clipboard-button {
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  color: #989b9f;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
   opacity: 0;
-  transition: 0.2s;
+  transition: opacity 0.2s, background 0.2s;
+  cursor: pointer;
+  flex-shrink: 0;
 
   & > svg {
-    fill: var(--light);
-    filter: contrast(0.3);
+    fill: #989b9f;
   }
 
   &:hover {
-    cursor: pointer;
-    border-color: var(--secondary);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.25);
   }
 
   &:focus {
@@ -28,9 +72,6 @@
   }
 }
 
-pre {
-  &:hover > .clipboard-button {
-    opacity: 1;
-    transition: 0.2s;
-  }
+pre:hover .clipboard-button {
+  opacity: 1;
 }
