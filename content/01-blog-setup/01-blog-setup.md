@@ -1,7 +1,7 @@
 ---
-title: gitblog check list
-description: GitHub Pages + Quartz + GitHub Actions로 블로그를 세팅하고 배포할 때 필요한 최종 체크리스트
-date: 2026-03-05
+title: 01. Github Blog 시작
+description: GitHub Pages + Quartz + GitHub Actions 기반으로 개인 기술 블로그를 시작
+date: 2026-03-04
 tags:
   - setup
   - quartz
@@ -10,7 +10,7 @@ tags:
   - ko-kr
 ---
 
-GitHub Pages + Quartz 블로그를 실제로 올리면서 정리한 최종 체크리스트입니다.
+GitHub Pages + Quartz 구성으로 블로그 구축 방법 
 
 # 1. 초기 생성 / 로컬 준비
 
