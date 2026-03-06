@@ -20,6 +20,7 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     Component.ArticleTitle(),
     Component.ContentMeta(),
+    Component.TableOfContents(),
     Component.TagList(),
   ],
   left: [
@@ -39,7 +40,7 @@ export const defaultContentPageLayout: PageLayout = {
   ],
   right: [
     Component.Graph(),
-    Component.DesktopOnly(Component.TableOfContents()),
+    Component.TableOfContents(),
     Component.Backlinks(),
   ],
 }

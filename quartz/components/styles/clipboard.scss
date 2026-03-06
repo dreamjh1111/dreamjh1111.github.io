@@ -1,3 +1,5 @@
+@use "../../styles/variables.scss" as *;
+
 /* macOS-style code block header */
 .code-header {
   display: flex;
@@ -9,6 +11,12 @@
   position: sticky;
   top: 0;
   z-index: 1;
+
+  @media all and ($mobile) {
+    position: relative;
+    top: auto;
+    z-index: auto;
+  }
 }
 
 .traffic-lights {
