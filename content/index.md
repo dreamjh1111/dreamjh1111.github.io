@@ -15,6 +15,7 @@ Quartz 기반으로 운영하는 개인 기술 블로그입니다.
 
 - [[gitblog check list|GitBlog 체크리스트 (Quartz + GitHub Pages)]]
 - [[01-blog-setup/02-seo-basics|02. SEO란 무엇이고 어떻게 최적화할까]]
+- [[01-blog-setup/03-seo-implementation|03. Quartz 블로그에 SEO 최적화 적용하기]]
 
 ## 운영 원칙
 

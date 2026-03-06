@@ -24,7 +24,7 @@ const DefaultDarkMode: QuartzTransformerPlugin = () => ({
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "Jayden Tech Blog",
-    pageTitleSuffix: "",
+    pageTitleSuffix: " | Jayden Tech Blog",
     enableSPA: true,
     enablePopovers: true,
     analytics: null,
@@ -103,6 +103,7 @@ const config: QuartzConfig = {
       Plugin.Favicon(),
       Plugin.NotFoundPage(),
       Plugin.CustomOgImages(),
+      Plugin.RobotsTxt(),
     ],
   },
 }
