@@ -11,9 +11,10 @@ tags:
 
 Quartz 기반으로 운영하는 개인 기술 블로그입니다.
 
-## 첫 번째 글
+## 01. Blog Setup
 
 - [[gitblog check list|GitBlog 체크리스트 (Quartz + GitHub Pages)]]
+- [[01-blog-setup/02-seo-basics|02. SEO란 무엇이고 어떻게 최적화할까]]
 
 ## 운영 원칙
 

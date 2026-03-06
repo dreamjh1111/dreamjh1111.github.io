@@ -1,6 +1,8 @@
 .DS_Store
 .gitignore
 node_modules
+npm-debug.log*
+.npm/
 public
 prof
 tsconfig.tsbuildinfo
