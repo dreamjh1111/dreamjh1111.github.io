@@ -137,13 +137,11 @@ jobs:
 
 # 마무리
 
-이제 글 작성 후 `git push`만 하면 GitHub Actions를 통해 자동 배포됩니다.
+이제 글 작성 후 `git push`만 하면 GitHub Actions를 통해 자동 배포된다.
 
-다음 단계는 간단합니다.
+남은 작업 리스트
 
-1. 새 글 작성
-2. 태그/설명(frontmatter) 점검
-3. 커밋/푸시
-4. Actions 성공 확인
-
-이 루틴만 유지하면 안정적으로 블로그를 운영할 수 있습니다.
+- [ ] 새 글 작성
+- [ ] 태그/설명(frontmatter) 점검
+- [ ] SEO 설정
+- [ ] Google AdSense 추가
