@@ -61,7 +61,7 @@
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 4px;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.2s, background 0.2s;
   cursor: pointer;
   flex-shrink: 0;
@@ -78,8 +78,4 @@
   &:focus {
     outline: 0;
   }
-}
-
-pre:hover .clipboard-button {
-  opacity: 1;
 }
