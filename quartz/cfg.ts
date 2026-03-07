@@ -56,6 +56,26 @@ export type Analytics =
       host?: string
     }
 
+export interface AdSenseConfiguration {
+  /**
+   * Enable AdSense script injection in <head>.
+   * Keep false until you are ready to verify/review the site in AdSense.
+   */
+  enabled: boolean
+  /**
+   * Publisher ID in `ca-pub-xxxxxxxxxxxxxxxx` format.
+   */
+  publisherId: string
+  /**
+   * Emit /ads.txt at site root.
+   */
+  adsTxtEnabled: boolean
+  /**
+   * ads.txt lines to emit. At least one valid AdSense line is recommended.
+   */
+  adsTxtLines: string[]
+}
+
 export interface GlobalConfiguration {
   pageTitle: string
   pageTitleSuffix?: string
@@ -65,6 +85,8 @@ export interface GlobalConfiguration {
   enablePopovers: boolean
   /** Analytics mode */
   analytics: Analytics
+  /** Google AdSense integration settings */
+  adsense?: AdSenseConfiguration
   /** Glob patterns to not search */
   ignorePatterns: string[]
   /** Whether to use created, modified, or published as the default type of date */

@@ -28,6 +28,12 @@ const config: QuartzConfig = {
     enableSPA: true,
     enablePopovers: true,
     analytics: null,
+    adsense: {
+      enabled: true,
+      publisherId: "ca-pub-3857371928558595",
+      adsTxtEnabled: true,
+      adsTxtLines: ["google.com, pub-3857371928558595, DIRECT, f08c47fec0942fa0"],
+    },
     locale: "ko-KR",
     baseUrl: "dreamjh1111.github.io",
     ignorePatterns: ["private", "_templates", ".obsidian"],
@@ -104,6 +110,7 @@ const config: QuartzConfig = {
       Plugin.NotFoundPage(),
       Plugin.CustomOgImages(),
       Plugin.RobotsTxt(),
+      Plugin.AdSense(),
     ],
   },
 }
