@@ -1,0 +1,107 @@
+@font-face {
+  font-family: Source Code Pro;
+  src: url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+}
+pre {
+  position: relative;
+}
+pre::after {
+  content: attr(data-ke-language);
+  position: absolute;
+  bottom: 6px;
+  right: 12px;
+  color: #cfd2d1;
+  font-size: 12px;
+}
+.hljs {
+  display: flex !important;
+  flex-direction: column;
+  padding: 0 !important;
+  font-size: 14px;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgb(0 0 0 / 40%);
+  color: #cfd2d1;
+  background-color: #2d3440;
+  font-family: "Source Code Pro", monospace;
+}
+.hljs .line {
+  counter-increment: line-idx;
+  line-height: 1.8;
+  white-space: pre;
+  padding-right: 5px;
+  min-width: 100% !important;
+}
+.hljs .line:hover {
+  background-color: #262830;
+}
+.hljs .line:hover::before {
+  color: #cfd2d1;
+}
+.hljs .line::before {
+  content: counter(line-idx);
+  width: 24px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 16px;
+  font-size: 0.8rem;
+  color: #747a7a;
+}
+.hljs .code-header {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px 8px 14px;
+  background-color: #2d3440;
+  border-radius: 8px 8px 0 0;
+}
+.hljs .code-header .btn {
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  margin: 0 4px;
+}
+.hljs .code-header .btn.red {
+  background-color: #f5655b;
+}
+.hljs .code-header .btn.yellow {
+  background-color: #f6bd3b;
+}
+.hljs .code-header .btn.green {
+  background-color: #43c645;
+}
+.hljs .code-body {
+  max-height: 600px;
+  margin: 20px 8px 25px 8px;
+  overflow: auto;
+  
+}
+.hljs .code-body::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.hljs .code-body::-webkit-scrollbar-thumb {
+  background-color: rgb(60, 64, 75);
+}
+.hljs .code-body::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+}
+.hljs .code-body::-webkit-scrollbar-corner {
+  display: none;
+}
+.hljs .copy-btn {
+  background-color: #ffffff17;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 4px;
+  width: 36px;
+  height: 28px;
+  margin-left: auto;
+  transition: 0.2s background-color;
+  font-size: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hljs .copy-btn:hover {
+  background-color: #ffffff30;
+}

@@ -12,7 +12,7 @@ tags:
   - ko-kr
 ---
 ![[Pasted image 20260307162554.png]]
-## ## 💿 Proxmox 설치
+## 💿 Proxmox 설치
 우선 Proxmox이미지를 usb에 담아야 한다.
 [Proxmox Download Link](https://www.proxmox.com/en/downloads)
 위 링크에서 이미지를 받은 뒤, 윈도우 사용자의 경우 [rufus](https://rufus.ie/ko/) 를, Mac이나 Ubuntu 사용자는 [balena](https://etcher.balena.io/)를 사용하여 Proxmox 이미지로 부팅 디스크를 만든다.

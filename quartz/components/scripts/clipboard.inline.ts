@@ -3,9 +3,62 @@ const svgCopy =
 const svgCheck =
   '<svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"><path fill-rule="evenodd" fill="rgb(63, 185, 80)" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg>'
 
+function normalizeCodeLines(codeBlock: HTMLElement) {
+  // Highlighted blocks already have line wrappers from rehype-pretty-code.
+  const highlightedLines = codeBlock.querySelectorAll(":scope > [data-line]")
+  if (highlightedLines.length > 0) {
+    highlightedLines.forEach((line) => line.classList.add("line"))
+    return
+  }
+
+  const text = codeBlock.textContent ?? ""
+  if (!text.length) return
+
+  const lines = text.replace(/\r\n/g, "\n").split("\n")
+  if (lines.length > 1 && lines[lines.length - 1] === "") {
+    lines.pop()
+  }
+
+  codeBlock.textContent = ""
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i]
+    const lineEl = document.createElement("div")
+    lineEl.className = "line"
+    lineEl.textContent = line.length > 0 ? line : " "
+    codeBlock.appendChild(lineEl)
+  }
+}
+
+function wrapCodeBody(codeBlock: HTMLElement) {
+  if (codeBlock.querySelector(":scope > .code-body")) return
+
+  const body = document.createElement("div")
+  body.className = "code-body"
+
+  while (codeBlock.firstChild) {
+    const node = codeBlock.firstChild
+
+    // Skip top-level whitespace text nodes (mostly "\n" between highlighted lines),
+    // which otherwise render as extra blank rows and make line-height inconsistent.
+    if (node.nodeType === Node.TEXT_NODE && (node.textContent ?? "").trim().length === 0) {
+      codeBlock.removeChild(node)
+      continue
+    }
+
+    body.appendChild(node)
+  }
+
+  codeBlock.appendChild(body)
+}
+
 document.addEventListener("nav", () => {
   const els = document.getElementsByTagName("pre")
   for (let i = 0; i < els.length; i++) {
+    if (els[i].querySelector(":scope > .code-header")) {
+      continue
+    }
+
     const codeBlock = els[i].getElementsByTagName("code")[0]
     if (codeBlock) {
       const source = (
@@ -13,7 +66,15 @@ document.addEventListener("nav", () => {
       ).replace(/\n\n/g, "\n")
 
       // Language label from data-language attribute
-      const lang = codeBlock.getAttribute("data-language") ?? ""
+      const lang = codeBlock.getAttribute("data-language") ?? els[i].getAttribute("data-language") ?? ""
+      normalizeCodeLines(codeBlock)
+      wrapCodeBody(codeBlock)
+      els[i].classList.add("mac-codeblock", "hljs")
+      if (lang) {
+        els[i].setAttribute("data-ke-language", lang.toUpperCase())
+      } else {
+        els[i].removeAttribute("data-ke-language")
+      }
 
       // Create macOS-style header
       const header = document.createElement("div")

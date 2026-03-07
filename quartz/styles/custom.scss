@@ -2,6 +2,83 @@
 
 // put your custom CSS here!
 
+/* Velog-like readability tuning */
+.page > #quartz-body {
+  .center {
+    max-width: 760px;
+  }
+
+  .center article {
+    font-size: 1.08rem;
+    letter-spacing: -0.003em;
+    word-spacing: 0.01em;
+  }
+
+  .center article p,
+  .center article li {
+    line-height: 1.8;
+  }
+
+  .center article p {
+    margin-top: 0.55rem;
+    margin-bottom: 1.05rem;
+  }
+
+  .center article ul,
+  .center article ol {
+    margin-top: 0.45rem;
+    margin-bottom: 1.05rem;
+  }
+
+  .center article h1,
+  .center article h2,
+  .center article h3 {
+    letter-spacing: -0.018em;
+    line-height: 1.35;
+  }
+
+  .center article > h1 {
+    font-size: clamp(2rem, 1.6rem + 1.5vw, 2.45rem);
+    margin-top: 2.3rem;
+    margin-bottom: 1.1rem;
+    line-height: 1.24;
+  }
+
+  .center article h2 {
+    font-size: clamp(1.55rem, 1.35rem + 0.8vw, 1.9rem);
+    margin-top: 2.05rem;
+    margin-bottom: 0.92rem;
+  }
+
+  .center article h3 {
+    font-size: clamp(1.26rem, 1.18rem + 0.35vw, 1.45rem);
+    margin-top: 1.72rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .center article blockquote {
+    line-height: 1.75;
+    color: var(--dark);
+    opacity: 0.95;
+  }
+
+  .center article code {
+    font-size: 0.88em;
+    letter-spacing: 0;
+  }
+
+  @media all and (max-width: 800px) {
+    .center article {
+      font-size: 1.02rem;
+    }
+
+    .center article p,
+    .center article li {
+      line-height: 1.74;
+    }
+  }
+}
+
 // Responsive TOC placement:
 // - desktop (>=1200px): show TOC in right sidebar
 // - tablet/mobile (<1200px): show TOC above article content

@@ -1,13 +1,43 @@
 @use "../../styles/variables.scss" as *;
 
-/* macOS-style code block header */
+.mac-codeblock {
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgb(0 0 0 / 40%);
+  background-color: #2d3440;
+}
+
+.mac-codeblock::after {
+  content: attr(data-ke-language);
+  position: absolute;
+  bottom: 6px;
+  right: 12px;
+  color: #cfd2d1;
+  font-size: 12px;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.mac-codeblock > code {
+  display: flex !important;
+  flex-direction: column;
+  padding: 0 !important;
+  font-size: 14px;
+  border-radius: 8px;
+  color: #cfd2d1;
+  background-color: #2d3440 !important;
+  font-family: var(--codeFont);
+  overflow: visible !important;
+  counter-reset: none !important;
+}
+
 .code-header {
   display: flex;
   align-items: center;
-  padding: 0.5rem 0.8rem;
-  background: #2d2d30;
-  border-bottom: 1px solid #3e3e42;
-  border-radius: 10px 10px 0 0;
+  padding: 8px 10px 8px 14px;
+  background-color: #2d3440;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid #3a404c;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -15,67 +45,118 @@
   @media all and ($mobile) {
     position: relative;
     top: auto;
-    z-index: auto;
   }
 }
 
 .traffic-lights {
   display: flex;
-  gap: 6px;
+  gap: 8px;
 }
 
 .dot {
+  border-radius: 50%;
   width: 12px;
   height: 12px;
-  border-radius: 50%;
 }
 
 .dot-red {
-  background: #ff5f56;
+  background-color: #f5655b;
 }
 
 .dot-yellow {
-  background: #ffbd2e;
+  background-color: #f6bd3b;
 }
 
 .dot-green {
-  background: #27c93f;
+  background-color: #43c645;
 }
 
 .code-lang {
-  flex: 1;
-  text-align: right;
-  font-family: var(--codeFont);
-  font-size: 0.75rem;
-  color: #989b9f;
-  padding-right: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  display: none;
 }
 
+.code-body {
+  max-height: 600px;
+  margin: 10px 8px 24px 8px;
+  overflow: auto;
+  counter-reset: code-line;
+  white-space: normal;
+}
+
+.code-body::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.code-body::-webkit-scrollbar-thumb {
+  background-color: rgb(60, 64, 75);
+}
+
+.code-body::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+}
+
+.code-body::-webkit-scrollbar-corner {
+  display: none;
+}
+
+.code-body > .line {
+  counter-increment: code-line;
+  line-height: 1.8;
+  white-space: pre;
+  padding-right: 5px;
+  padding-left: 3rem !important;
+  position: relative;
+  min-width: 100%;
+  display: block;
+  box-sizing: border-box;
+}
+
+.code-body > .line:hover {
+  background-color: #262830;
+}
+
+.code-body > .line::before {
+  content: counter(code-line) ".";
+  position: absolute;
+  left: 0.8rem;
+  width: 24px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 16px;
+  font-size: 0.8rem;
+  color: #747a7a;
+  pointer-events: none;
+  user-select: none;
+}
+
+.copy-btn,
 .clipboard-button {
+  background-color: #ffffff17;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 4px;
+  width: 36px;
+  height: 28px;
+  margin-left: auto;
+  transition: 0.2s background-color;
+  font-size: 0;
   display: flex;
   align-items: center;
-  padding: 0.2rem 0.5rem;
-  color: #989b9f;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
-  opacity: 1;
-  transition: opacity 0.2s, background 0.2s;
-  cursor: pointer;
-  flex-shrink: 0;
+  justify-content: center;
+}
 
-  & > svg {
-    fill: #989b9f;
-  }
+.copy-btn:hover,
+.clipboard-button:hover {
+  background-color: #ffffff30;
+}
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.25);
-  }
+.copy-btn:focus,
+.clipboard-button:focus {
+  outline: 0;
+}
 
-  &:focus {
-    outline: 0;
-  }
+.clipboard-button > svg {
+  fill: #fff;
 }
