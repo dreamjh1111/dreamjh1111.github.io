@@ -1,0 +1,289 @@
+---
+title: 04. 홈서버 구축기 (Proxmox)
+description: Ubuntu VM 생성 및 커스터마이징 과정을 정리한 글
+socialDescription: Proxmox 기반 Ubuntu VM 구축과 데스크톱/개발 환경 커스터마이징 기록
+date: 2026-03-07
+draft: false
+tags:
+  - home-server
+  - proxmox
+  - vm
+  - ubuntu
+  - ko-kr
+---
+![[Pasted image 20260307163101.png]]
+## Linux(Ubuntu) VM ?앹꽦
+### ?앹꽦? [?덉꽌踰?援ъ텞湲?(Proxmox) 3](https://velog.io/@dreamjh/%ED%99%88%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%B6%95%EA%B8%B0-Proxmox-3) 瑜?李몄“
+?곕텇?ъ쓽 寃쎌슦???덈룄??VM怨??숈씪??怨쇱젙?쇰줈 吏꾪뻾?쒕떎.
+
+1.  [?곕텇???대?吏 怨듭떇 ?ㅼ슫濡쒕뱶 ?ъ씠??(https://ubuntu.com/download/desktop) ?먯꽌 ISO?뚯씪???ㅼ슫 諛쏅뒗??	- ?ш린???쒕쾭? ?곗뒪?ы깙踰꾩쟾??議댁옱?섎뒗???곗뒪?ы깙踰꾩쟾??異붿쿇?쒕떎. ?닿? ?앷컖?섎뒗 ?곕텇?щ? ?ъ슜?섎뒗 ?댁쑀???ㅼ쓬怨?媛숇떎.
+	1. ?섎쭖? ?곕퉬?덇퀎??由щ늼??以??섎굹?쇰퓧?대떎. 洹몃윴???듭닕?섍퀬 ?몃━??UX/UI瑜??쒓났?댁???(?ㅻⅨ 而ㅼ뒪? OS??議댁옱?섏?留??대쭔?쇱쓽 ?덉젙?깃낵 ?낅뜲?댄듃, ?붿옄?몄쓣 ?쒓났?섎뒗?곕뒗 湲곕낯 ?곕텇?ш? 醫뗫떎怨??앷컖?쒕떎.)
+    2. ?섎쭖? 媛뺣젰???댄뵆由ъ??댁뀡 吏??諛?蹂댁븞湲곕뒫???쒓났?쒕떎.
+    - 洹몃윴???ш린???곕텇???쒕쾭瑜??좏깮?쒕떎? > ?꾩옄??CLI媛 GUI?섍꼍蹂대떎 ?듭닕?섎떎 ?좊쭔??寃쏀뿕???덈떎. ?섏?留??ъ쟾???ㅼ젙???닿퀬 留덉슦?ㅻ줈 ?섍꼍?ㅼ젙???섎뒗寃??명븯?? CLI紐낅졊?닿? ?대젮?뚯꽌? ?닿굔 ?대졄怨?留먭퀬??臾몄젣媛 ?꾨땲?? GUI?섍꼍? OS瑜??ㅼ튂?섍퀬 珥덇린 ?섍꼍?ㅼ젙(??쒖쟻?쇰줈 ?ㅻ낫?? ?ㅽ듃?뚰겕, ?쒓뎅?댁꽕???????섎뒗?곕뒗 ?ъ쟾???뺣룄?곸씤 ?뚯썙瑜??????덈떎.
+    - GUI?섍꼍????由ъ냼?ㅻ? 留롮씠 癒뱀? ?딅뒗媛? > ?곕텇?щ? ?ъ슜?대뇬?ㅻ㈃ ?뚯닔 ?덈뒗 ?ъ떎?댁?留?GUI?섍꼍?쇰줈 ?ㅼ튂?대룄 ?듭뀡??蹂寃쏀븯硫?遺?낆떆 CLI紐⑤뱶濡??ъ슜??媛?ν븯?? 利? ?ㅼ젙???꾨즺???댄썑 CLI濡?諛붽퓭踰꾨━硫?洹몃쭔?대떎.
+2. Proxmox??ISO瑜??щ┛??
+3. VM???ㅽ뻾?쒕떎. [?덉꽌踰?援ъ텞湲?(Proxmox) 3](https://velog.io/@dreamjh/%ED%99%88%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%B6%95%EA%B8%B0-Proxmox-3)
+
+怨쇱젙?먯껜???쎄린?뚮Ц??(遺議깊븳 遺遺꾩? 援ш?留곸쓣 ?듯빐 ?닿껐?섏옄) ?ㅼ쓬?쇰줈 ?섏뼱媛꾨떎.
+
+## Ubuntu 而ㅼ뒪?(?좏깮)
+![[Pasted image 20260307163122.png]]
+(?꾩꽦??紐⑥뒿)
+
+?꾩옄???곕텇?щ? 二쇰젰 OS濡??ъ슜?좊쭔??醫뗭븘?쒕떎. ?곕씪??GUI?섍꼍???ъ슜?섍린 ?명븯寃?而ㅼ뒪??대낫??
+
+?대떦 而ㅼ뒪?? ?멸뎅?????좎???而ㅼ뒪???李몄“?섏???
+?쒖옉?섍린 ?꾩뿉 ?ㅼ쓬 ?붽뎄 ?ы빆??異⑹”?섎뒗吏 ?뺤씤?섏꽭??
+
+### ?붽뎄 ?ы빆
+- GNOME 踰꾩쟾 : GNOME 46
+- Linux 諛고룷??: Ubuntu 24.04
+
+### 珥덇린 ?ㅼ젙
+- 湲곗〈 ?⑦궎吏 ?낅뜲?댄듃 諛??⑦궎吏 醫낆냽???ㅼ튂
+```
+sudo apt update && sudo apt dist-upgrade -y
+
+sudo apt install curl \
+rsync \
+git \
+gdebi \
+nautilus-admin \
+nautilus-extension-gnome-terminal \
+sassc \
+gnome-tweaks \
+gnome-shell-extension-manager -y
+
+```
+
+### ??諛?醫낆냽???ㅼ튂
+[?꾩닔 ?뚯씪 ?ㅼ슫濡쒕뱶 留곹겕](https://www.pling.com/p/2176652/)
+
+??留곹겕?먯꽌 ?꾨옒 ??ぉ?ㅼ쓣 Downloads?붾젆?좊━???ㅼ슫諛쏅뒗??
+- fishomp-config.zip
+- cava-config.zip
+- conky-config.zip
+- cursors-theme.zip
+- fonts.zip
+- gnome-extensions.zip
+- GTK-Themes.zip
+- icon-themes.zip
+- ubuntu-desktop-settings.zip
+- wallpapers.zip
+
+### GNOME Extensions ?ㅼ튂
+```
+unzip -o $HOME/Downloads/gnome-extensions.zip -d $HOME/.local/share/gnome-shell/
+```
+
+### GTK ?뚮쭏 ?ㅼ튂
+1. .themes ?붾젆?좊━瑜????붾젆?좊━???앹꽦
+```
+mkdir -p $HOME/.themes
+```
+2. Orchis GTK?뚮쭏 異붽?
+```
+unzip -o $HOME/Downloads/GTK-Themes.zip -d $HOME/.themes
+```
+3. 痍⑦뼢???곕씪??Dark ?뚮쭏? White ?뚮쭏以??섎굹瑜?怨⑤씪 留곹겕瑜??앹꽦?댁??? (留곹겕媛 ?꾨땲???뚯씪????꺼??臾대갑)
+```
+# ?ㅽ겕?뚮쭏
+ln -sf $HOME/.themes/Orchis-Dark/gtk-4.0/{assets,gtk.css,gtk-dark.css} $HOME/.config/gtk-4.0/
+# ?붿씠?명뀒留?ln -sf $HOME/.themes/Orchis-Light/gtk-4.0/{assets,gtk.css,gtk-dark.css} $HOME/.config/gtk-4.0/
+```
+
+### ?꾩씠肄??뚮쭏 ?ㅼ튂
+1. ???붾젆?좊━??.local/share/icons ?붾젆?좊━ 異붽?
+```
+mkdir -p $HOME/.local/share/icons
+```
+2. ?꾩씠肄??뚮쭏 異붽?
+```
+unzip -o $HOME/Downloads/icon-themes.zip -d $HOME/.local/share/icons
+
+```
+
+### Cursors ?뚮쭏 ?ㅼ튂
+1. ???붾젆?좊━??.icon ?붾젆?좊━ 異붽?
+```
+mkdir -p $HOME/.icons
+```
+2. cursor ?뚮쭏 異붽?
+```
+unzip -o $HOME/Downloads/cursors-theme.zip -d $HOME/.icons
+
+```
+
+### ?고듃 諛?諛곌꼍?붾㈃ ?ㅼ튂
+1. ?고듃 ?ㅼ튂
+```
+unzip -o $HOME/Downloads/fonts.zip -d $HOME/.local/share/
+
+```
+2. 諛곌꼍?붾㈃ ?ㅼ튂
+```
+sudo unzip -o ~/Downloads/wallpapers.zip -d /usr/share/backgrounds/
+
+```
+
+### (?좏깮?ы빆) Conky ?꾩젽 ?ㅼ튂[?좎뵪 ?꾩젽]
+1. Ubuntu/Debian ?댁쁺泥댁젣 ?꾩닔 ?⑦궎吏 ?ㅼ튂
+```
+sudo apt install conky-all jq curl playerctl -y
+
+```
+2. conky config ?ㅼ튂
+```
+unzip -o ~/Downloads/conky-config.zip -d $HOME/.config
+
+```
+3. ?꾩떆 諛??좎뵪 ?뺣낫 蹂寃?
+```
+sudo vim ~/.config/conky/Alfirk-MOD/scripts/weather.sh
+```
+
+```
+# Variables
+# get your city id at https://openweathermap.org/find and replace
+city_id=1733046
+
+# you can use this or replace with yours
+api_key=60d7b980f7da638967fed7f0aaf80f84
+```
+?댁젣 https://openweathermap.org/find 濡?媛???꾩떆 ID瑜??산퀬, ?꾩떆瑜??낅젰?쒕떎. API ?ㅻ? ?산퀬 ?띕떎硫?媛????釉뚮씪?곗???二쇱냼李쎌뿉???꾩떆瑜??대┃?섍퀬, ?꾩떆 ID瑜?city_id?뚯씪 ?뱀뀡??蹂듭궗?쒕떎.
+
+### (?좏깮?ы빆) Cava ?꾩젽 ?ㅼ튂[?ㅻ뵒??異쒕젰 ?ㅽ럺?몃읆 ?꾩젽]
+1. Ubuntu/Debian ?댁쁺泥댁젣 ?꾩닔 ?⑦궎吏 ?ㅼ튂
+```
+sudo apt install cava -y
+```
+2. Cava config ?ㅼ튂
+```
+unzip -o $HOME/Downloads/cava-config.zip -d $HOME/.config/
+```
+
+### Neofetch ?ㅼ튂
+neofetch??OS???꾨옒 ?ъ쭊泥섎읆 ?댁쁺泥댁젣 諛?PC?뺣낫瑜??쒕늿??蹂????덈룄濡??댁＜???댁씠??
+![[Pasted image 20260307163140.png]]
+
+1. neofetch ?ㅼ튂
+```
+sudo apt install neofetch -y
+```
+
+2. neofetch config ?ㅼ튂
+```
+unzip -o $HOME/Downloads/neofetch-config.zip -d $HOME/.config/
+```
+
+### Fish Shell & Oh My Posh
+?대?遺꾩? 媛쒖씤?곸쑝濡??꾩닔?쇨퀬 ?앷컖?쒕떎. ?곕텇?ъ쓽 湲곕낯 ?섏씤 bash Shell???붿슧 ?명븯寃??ъ슜?????덈룄濡?Fish Shell濡?諛붽퓭二쇰뒗 遺遺꾩씠?? 媛????쒖쟻??湲곕뒫?쇰줈???댁쟾 紐낅졊?대뱾??遺꾩꽍?댁꽌 紐낅졊?댁쓽 ?쇰?瑜?爾ㅼ쓣???먮룞?꾩꽦湲곕뒫, ?섏쓣 ???명븯寃??ъ슜?????덈뒗 ?щ윭 ?뱀닔湲곕뒫?ㅼ쓣 ?쒓났?쒕떎.
+
+1. Fish Shell ?ㅼ튂
+```
+sudo apt install fish -y
+```
+2. Fish Shell??Default Shell濡?蹂寃?```
+chsh -s /usr/bin/fish
+```
+3. Oh My Posh ?ㅼ튂
+```
+sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+```
+4. oh-my-posh ?뚯씪 沅뚰븳 ?ㅼ젙
+```
+sudo chmod +x /usr/local/bin/oh-my-posh
+```
+
+### Fish Shell ?ㅼ튂 諛?Oh My Posh ?ㅼ젙
+```
+unzip -o $HOME/Downloads/fishomp-config.zip -d $HOME
+chmod u+rw ~/.poshthemes/*.json
+```
+
+### Flatpak 諛?AppImages 吏???쒖꽦??```
+sudo apt install gnome-software gnome-software-plugin-flatpak flatpak libfuse2 -y
+flatpak remote-add --if-not-exists flathub \
+https://flathub.org/repo/flathub.flatpakrepo
+```
+
+### Flatpak ???ㅼ튂
+1. 紐낅졊?대? ?듯빐 flatpak ?댄뵆由ъ??댁뀡 紐뉕?吏瑜??ㅼ튂?쒕떎.
+```
+flatpak install flathub io.bassi.Amberol -y
+flatpak install flathub net.agalwood.Motrix -y
+flatpak install flathub com.rafaelmardojai.Blanket -y
+flatpak install flathub com.github.KRTirtho.Spotube -y
+flatpak install flathub com.mattjakeman.ExtensionManager -y
+```
+
+2. flatpak?????Orichis GTK ?뚮쭏 吏???쒖꽦??```
+sudo flatpak override --filesystem=$HOME/.themes
+sudo flatpak override --filesystem=$HOME/.local/share/icons
+sudo flatpak override --filesystem=xdg-config/gtk-4.0
+```
+
+### GNOME ???ㅼ튂
+```
+sudo apt install gnome-weather \
+gnome-maps \
+gnome-audio \
+gnome-calendar \
+gnome-clocks \
+gnome-connections \
+gnome-console \
+gnome-contacts \
+gnome-music \
+vlc \
+gnome-shell-pomodoro -y
+```
+
+### (?좏깮)Plymouth ?뚮쭏 ?ㅼ튂
+?닿굔 洹몃깷 遺?낅릺???숈븞 洹몃옒???좊땲硫붿씠?섏쓣 蹂寃쏀븯???묒뾽?대?濡??좏깮?ы빆?대떎.
+?섎㈃ ?댁걯湲??섎떎.
+```
+sudo apt install plymouth -y
+```
+
+```
+sudo unzip -o $HOME/Downloads/plymouth-theme.zip -d /usr/share/plymouth/themes
+
+sudo update-alternatives --install \
+  /usr/share/plymouth/themes/default.plymouth default.plymouth \
+  /usr/share/plymouth/themes/hexagon_dots/hexagon_dots.plymouth 100
+
+sudo update-alternatives --config default.plymouth
+```
+
+異쒕젰:
+```
+There are 2 choices for the alternative default.plymouth (providing /usr/share/plymouth/themes/default.plymouth).
+
+  Selection    Path                                                         Priority   Status
+------------------------------------------------------------
+* 0            /usr/share/plymouth/themes/mint-logo/mint-logo.plymouth       200       auto mode
+  1            /usr/share/plymouth/themes/bgrt/bgrt.plymouth                 110       manual mode
+  2            /usr/share/plymouth/themes/hexagon_dots/hexagon_dots.plymouth               100       
+
+Press <enter> to keep the current choice[*], or type selection number: 2
+update-alternatives: using /usr/share/plymouth/themes/hexagon_dots/hexagon_dots.plymouth to provide /usr/share/plymouth/themes/default.plymouth (default.plymouth) in manual mode
+```
+```
+sudo update-initramfs -u
+```
+
+### GNOME 援ъ꽦 ?곸슜
+```
+unzip $HOME/Downloads/ubuntu-desktop-settings.zip -d $HOME/Downloads/
+
+dconf load / < $HOME/Downloads/ubuntu-desktop-settings.conf
+```
+
+?ㅼ튂?꾨즺
+
+## ?뙚 寃곕줎 諛??ν썑 怨꾪쉷
+Proxmox瑜??ㅼ튂?섍퀬 ?덈룄?? ?곕텇?щ? ?ㅼ튂 ?꾨즺?덇퀬 寃뚯떆湲濡??뺣━?섏????딆븯吏留?nas??떆 ?ㅼ튂瑜??꾨즺?덈떎.
+
+proxmox??https ?ㅼ젙???곸슜?섎뒗 ?묒뾽, ?ы듃?ъ썙???뺣━, VM?쒗뵆由??곸슜 ??留롮? ?ㅼ젙??吏꾪뻾?섏??붾뜲 ?뷀뀒?쇳븳 ?묒뾽 ?섍꼍 ?ㅼ젙? ?ъ슜?먮쭏?? ?곹솴留덈떎 ?ㅻⅤ湲??뚮Ц???щ━吏 ?딄린濡?寃곗젙?섏???
+
+?ш린??理쒖쥌?곸쑝濡??덉꽌踰?援ъ텞? ?ш린??留덈Т由ы븯怨??ㅼ쓬 湲?먯꽌???덉꽌踰꾨? ?쒖슜???щ윭媛吏 ?쒕퉬?ㅻ? 援щ룞?섎뒗 怨쇱젙???ㅻ? ?덉젙?대떎.
