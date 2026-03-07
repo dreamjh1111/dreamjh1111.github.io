@@ -11,7 +11,7 @@ tags:
   - ko-kr
 ---
 
-[[01-blog-setup/02-seo-basics|이전 글]]에서 SEO의 원리와 기법을 정리했다. 이 글에서는 그 내용을 바탕으로 이 블로그(Quartz v4 + GitHub Pages)에 **실제로 적용한 작업**을 코드 단위로 기록한다.
+[[02-seo-basics|이전 글]]에서 SEO의 원리와 기법을 정리했다. 이 글에서는 그 내용을 바탕으로 이 블로그(Quartz v4 + GitHub Pages)에 **실제로 적용한 작업**을 코드 단위로 기록한다.
 
 # 1. 적용 전 현황 진단
 
@@ -335,7 +335,7 @@ pageTitleSuffix: " | Jayden Tech Blog",
 
 ## 6-2. 02편 기준 충족 현황
 
-[[01-blog-setup/02-seo-basics|02편]]에서 정리한 "이 블로그에서 바로 적용할 항목"과 대조한다.
+[[02-seo-basics|02편]]에서 정리한 "이 블로그에서 바로 적용할 항목"과 대조한다.
 
 **1단계 - 기본 색인 기반**
 - sitemap/rss 유지 확인 → 이미 활성 상태
