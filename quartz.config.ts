@@ -111,6 +111,10 @@ const config: QuartzConfig = {
       Plugin.CustomOgImages(),
       Plugin.RobotsTxt(),
       Plugin.AdSense(),
+      Plugin.SearchConsoleMetaTag({
+        enabled: true,
+        content: "7Tv3XXa4ezsMblmlnxzSFaybQAqbyR7-mXtKUcJBAtU",
+      }),
     ],
   },
 }
