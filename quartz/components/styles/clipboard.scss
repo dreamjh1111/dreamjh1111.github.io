@@ -38,14 +38,7 @@
   background-color: #2d3440;
   border-radius: 8px 8px 0 0;
   border-bottom: 1px solid #3a404c;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-
-  @media all and ($mobile) {
-    position: relative;
-    top: auto;
-  }
+  position: relative;
 }
 
 .traffic-lights {

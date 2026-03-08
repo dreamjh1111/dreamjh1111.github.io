@@ -5,7 +5,9 @@
 /* Velog-like readability tuning */
 .page > #quartz-body {
   .center {
+    width: 100%;
     max-width: 760px;
+    min-width: 0;
   }
 
   .center article {
@@ -98,7 +100,104 @@
   }
 
   @media all and (max-width: 1199px) {
+    padding-inline: clamp(16px, 2.4vw, 24px);
+
+    .center,
+    footer {
+      max-width: 768px;
+      min-width: 0;
+    }
+
+    @media all and (min-width: 801px) {
+      .center,
+      footer {
+        // Keep a visible gutter on the right in tablet range.
+        width: min(calc(100% - clamp(16px, 2.2vw, 24px)), 768px);
+        margin-left: 0;
+        margin-right: auto;
+      }
+    }
+
+    @media all and (max-width: 800px) {
+      padding-inline: clamp(16px, 4vw, 20px);
+
+      .center,
+      footer {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+
     .sidebar.right .toc {
+      display: none;
+    }
+
+    .center .page-header .toc {
+      // Keep top TOC scrollable without trapping the full-page scroll.
+      max-height: 70dvh;
+      overflow: hidden;
+    }
+
+    .center .page-header .toc .toc-content.overflow {
+      max-height: calc(70dvh - 2rem);
+      overscroll-behavior: auto;
+      touch-action: pan-y;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  // Compact desktop (1200px-1399px):
+  // Avoid overlap by using a tablet-like right sidebar flow.
+  @media all and (min-width: 1200px) and (max-width: 1399px) {
+    padding: 0 clamp(16px, 2.6vw, 32px) 0 clamp(8px, 1.2vw, 16px);
+    column-gap: clamp(12px, 1.6vw, 20px);
+    grid-template-columns: minmax(240px, 280px) minmax(0, 1fr);
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "grid-sidebar-left grid-header"
+      "grid-sidebar-left grid-center"
+      "grid-sidebar-left grid-sidebar-right"
+      "grid-sidebar-left grid-footer";
+
+    .center {
+      width: min(100%, 768px);
+      max-width: 768px;
+      min-width: 0;
+      margin-left: 0;
+      margin-right: auto;
+    }
+
+    .center .page-header .toc {
+      display: block;
+      max-height: 70dvh;
+      overflow: hidden;
+    }
+
+    .center .page-header .toc .toc-content.overflow {
+      max-height: calc(70dvh - 2rem);
+      overscroll-behavior: auto;
+      touch-action: pan-y;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .sidebar.right {
+      position: initial;
+      height: unset;
+      width: 100%;
+      flex-direction: row;
+      padding: 0;
+      margin-left: inherit;
+      margin-right: inherit;
+    }
+
+    .sidebar.right > * {
+      flex: 1;
+      max-height: 24rem;
+    }
+
+    .sidebar.right > .toc {
       display: none;
     }
   }
