@@ -1,6 +1,242 @@
 @use "./base.scss";
+@use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+:root {
+  --surface-1: #ffffff;
+  --surface-2: #f7f8fa;
+  --surface-3: #eef2f6;
+  --border-soft: #e5e7eb;
+  --border-strong: #d7dde6;
+  --shadow-soft: rgba(15, 23, 42, 0.05);
+  --shadow-strong: rgba(15, 23, 42, 0.1);
+  --text-primary: #111827;
+  --text-secondary: #475569;
+  --link-subtle: rgba(37, 99, 235, 0.08);
+}
+
+:root[saved-theme="dark"] {
+  --surface-1: #23262b;
+  --surface-2: #1f2227;
+  --surface-3: #2b3037;
+  --border-soft: #31363f;
+  --border-strong: #424a55;
+  --shadow-soft: rgba(0, 0, 0, 0.22);
+  --shadow-strong: rgba(0, 0, 0, 0.34);
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --link-subtle: rgba(124, 180, 255, 0.1);
+}
+
+:root[saved-theme="dark"] .page > #quartz-body {
+  .sidebar.left {
+    background: color-mix(in srgb, #1b1d21 94%, transparent);
+  }
+
+  .search > .search-button,
+  .search > .search-container .search-space > *,
+  .explorer-content,
+  .toc,
+  .sidebar.right > .backlinks,
+  .sidebar.right > .graph,
+  .home-post-card {
+    background-color: var(--surface-1);
+  }
+
+  blockquote {
+    background: color-mix(in srgb, var(--surface-2) 90%, rgba(124, 180, 255, 0.1));
+    border-left-color: color-mix(in srgb, var(--secondary) 74%, white 26%);
+  }
+
+  code:not(pre code) {
+    background: color-mix(in srgb, var(--surface-2) 92%, rgba(124, 180, 255, 0.08));
+  }
+}
+
+body {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--light) 97%, var(--surface-1) 3%),
+    var(--light)
+  );
+  color: var(--text-secondary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+.page-title a,
+.folder-container div > a,
+.folder-container div > button span {
+  color: var(--text-primary);
+}
+
+a.internal {
+  background: var(--link-subtle);
+  border-radius: 6px;
+}
+
+a.internal:not(.tag-link):not(:has(> img)) {
+  padding: 0 0.12rem;
+}
+
+a.internal.tag-link,
+.tags > li > a {
+  background: var(--surface-2);
+  border: 1px solid var(--border-soft);
+  color: var(--text-secondary);
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+a.internal.tag-link:hover,
+.tags > li > a:hover {
+  color: var(--secondary);
+  border-color: color-mix(in srgb, var(--secondary) 24%, var(--border-strong));
+  background: color-mix(in srgb, var(--surface-2) 88%, var(--link-subtle) 12%);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border-soft);
+}
+
+.page > #quartz-body {
+  @media all and not ($mobile) {
+    .sidebar.left {
+      background: color-mix(in srgb, var(--surface-1) 92%, transparent);
+      border-right: 1px solid var(--border-soft);
+      box-shadow: 12px 0 24px var(--shadow-soft);
+      backdrop-filter: blur(18px);
+    }
+  }
+
+  .sidebar.right > *,
+  .center .page-header .toc,
+  .sidebar.right .toc,
+  .home-post-card,
+  .search > .search-button,
+  .search > .search-container .search-space > *,
+  .explorer-content {
+    background-color: var(--surface-1);
+  }
+
+  .search > .search-button {
+    height: 2.35rem;
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    box-shadow: none;
+    transition:
+      border-color 180ms ease,
+      background-color 180ms ease,
+      transform 180ms ease;
+
+    &:hover {
+      border-color: color-mix(in srgb, var(--secondary) 28%, var(--border-strong));
+      background-color: var(--surface-2);
+      transform: translateY(-1px);
+    }
+  }
+
+  .search > .search-container .search-space > * {
+    border-radius: 18px;
+    border-color: var(--border-soft);
+    box-shadow:
+      0 12px 30px var(--shadow-soft),
+      0 6px 18px var(--shadow-strong);
+  }
+
+  .search > .search-container .search-space > .search-layout {
+    border-color: var(--border-soft);
+  }
+
+  .search > .search-container .search-space > .search-layout .result-card {
+    border-bottom-color: var(--border-soft);
+
+    &:hover,
+    &:focus,
+    &.focus {
+      background: var(--surface-2);
+    }
+  }
+
+  .explorer {
+    .mobile-explorer,
+    .desktop-explorer {
+      color: var(--dark);
+    }
+  }
+
+  .mobile-explorer {
+    width: 2.45rem;
+    height: 2.45rem;
+    justify-content: center;
+    border: 1px solid var(--border-strong);
+    border-radius: 14px;
+    background: var(--surface-1);
+    box-shadow: none;
+  }
+
+  .desktop-explorer,
+  .toc-header {
+    padding: 0.15rem 0;
+  }
+
+  .explorer-content {
+    margin-top: 0.75rem;
+    padding: 0.35rem 0;
+
+    ul li > a {
+      color: var(--text-secondary);
+
+      &.active {
+        color: var(--secondary);
+      }
+    }
+
+    .folder-outer > ul {
+      border-left-color: var(--border-soft);
+    }
+  }
+
+  .folder-container {
+    gap: 0.2rem;
+  }
+
+  .toc,
+  .sidebar.right > .backlinks,
+  .sidebar.right > .graph {
+    border: 1px solid var(--border-soft);
+    border-radius: 18px;
+    padding: 1rem 1.1rem;
+    box-shadow: 0 6px 18px var(--shadow-soft);
+  }
+
+  .sidebar.right > .graph {
+    background: var(--surface-1);
+  }
+
+  blockquote {
+    background: color-mix(in srgb, var(--surface-2) 82%, var(--highlight) 18%);
+    border-left: 3px solid color-mix(in srgb, var(--secondary) 56%, white 44%);
+    border-radius: 0 16px 16px 0;
+    padding: 0.9rem 1rem;
+  }
+
+  code:not(pre code) {
+    background: color-mix(in srgb, var(--surface-2) 88%, var(--highlight) 12%);
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    padding: 0.15rem 0.35rem;
+  }
+}
 
 /* Velog-like readability tuning */
 .page > #quartz-body {
