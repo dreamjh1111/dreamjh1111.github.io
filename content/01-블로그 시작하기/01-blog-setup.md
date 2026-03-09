@@ -1,7 +1,7 @@
 ---
 title: 01. Github Blog 시작
 description: GitHub Pages + Quartz + GitHub Actions 기반으로 개인 기술 블로그를 시작
-date: 2026-03-04
+date: "2026-03-04T00:00:01+09:00"
 tags:
   - setup
   - quartz

@@ -57,7 +57,6 @@ export default ((userOpts?: Partial<Options>) => {
         class={classNames(displayClass, "explorer")}
         data-behavior={opts.folderClickBehavior}
         data-collapsed={opts.folderDefaultState}
-        data-sort="frontmatter-date"
         data-savestate={opts.useSavedState}
         data-data-fns={JSON.stringify({
           order: opts.order,

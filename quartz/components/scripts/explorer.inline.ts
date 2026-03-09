@@ -21,30 +21,6 @@ type FolderState = {
 
 let currentExplorerState: Array<FolderState>
 
-function getLatestFrontmatterDate(node: FileTrieNode): number {
-  const current = node.data?.date ? new Date(node.data.date).getTime() : Number.NEGATIVE_INFINITY
-  const childTimes = node.children.map(getLatestFrontmatterDate)
-  return Math.max(current, ...childTimes)
-}
-
-function byFrontmatterDate(a: FileTrieNode, b: FileTrieNode): number {
-  const aTime = getLatestFrontmatterDate(a)
-  const bTime = getLatestFrontmatterDate(b)
-
-  if (aTime !== bTime) {
-    return bTime - aTime
-  }
-
-  if (a.isFolder !== b.isFolder) {
-    return a.isFolder ? -1 : 1
-  }
-
-  return a.displayName.localeCompare(b.displayName, undefined, {
-    numeric: true,
-    sensitivity: "base",
-  })
-}
-
 function toggleExplorer(this: HTMLElement) {
   const nearestExplorer = this.closest(".explorer") as HTMLElement
   if (!nearestExplorer) return
@@ -192,10 +168,6 @@ async function setupExplorer(currentSlug: FullSlug) {
       sortFn: new Function("return " + (dataFns.sortFn || "undefined"))(),
       filterFn: new Function("return " + (dataFns.filterFn || "undefined"))(),
       mapFn: new Function("return " + (dataFns.mapFn || "undefined"))(),
-    }
-
-    if (explorer.dataset.sort === "frontmatter-date") {
-      opts.sortFn = byFrontmatterDate
     }
 
     // Get folder state from local storage

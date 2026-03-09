@@ -2,7 +2,7 @@
 title: 03. 홈서버 구축기 (Proxmox)
 description: Proxmox에서 Windows 11 VM 생성과 테스트 경험을 정리한 글
 socialDescription: Proxmox 환경에서 Windows 11 가상머신을 생성하고 사용한 과정을 기록
-date: 2026-03-07
+date: "2026-03-07T00:00:03+09:00"
 draft: false
 tags:
   - home-server
@@ -86,4 +86,3 @@ Proxmox에 VM을 올리는건 매우 간단했다.
 특히나 그래픽카드를 가상으로 돌리는 과정에서 안그래도 부족한 내장그래픽의 성능을 활용하지 못하기 때문에 유튜브 영상조차 재생하는순간 cpu 100%찍으며 이륙소리를 내는 pc를 보고.....
 
 하지만 정말 급할때 사용할 윈도우서버가 필요하다면, 혹은 자신의 pc성능이 충분하다면 추천해볼만 한 작업인것 같다.
-

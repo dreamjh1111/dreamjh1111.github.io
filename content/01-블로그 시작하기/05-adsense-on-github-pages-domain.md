@@ -2,7 +2,7 @@
 title: 05. GitHub 기본 도메인(dreamjh1111.github.io)에 Google AdSense 적용하기
 description: 커스텀 도메인 없이 GitHub Pages 기본 도메인에 AdSense를 적용하고, ads.txt/검증/점검까지 진행한 구현 기록
 socialDescription: Quartz 블로그에 AdSense 설정 객체, head 스크립트 주입, 루트 ads.txt 생성, 배포 후 확인 절차를 적용한 상세 가이드
-date: 2026-03-07
+date: "2026-03-07T00:00:05+09:00"
 draft: true
 tags:
   - quartz

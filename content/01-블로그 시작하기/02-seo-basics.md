@@ -2,7 +2,7 @@
 title: 02. SEO란 무엇이고 어떻게 최적화할까
 description: 검색엔진이 페이지를 발견/이해/평가하는 원리와 실무 SEO 최적화 방법 정리
 socialDescription: Google 공식 문서와 국내외 기술블로그 사례를 바탕으로 SEO 핵심 개념과 적용법을 정리
-date: 2026-03-06
+date: "2026-03-06T00:00:02+09:00"
 tags:
   - seo
   - technical-seo

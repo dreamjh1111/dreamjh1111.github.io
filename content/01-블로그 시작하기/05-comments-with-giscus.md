@@ -2,7 +2,7 @@
 title: "05. DB 없이 댓글 기능 붙이기: Giscus 적용"
 description: "정적 블로그에서 DB 서버 없이 댓글 기능을 운영하기 위해 Giscus를 선택한 이유, 원리, 적용 방법을 정리한다."
 socialDescription: "GitHub Discussions 기반 댓글 시스템 Giscus의 선택 배경과 실제 적용 코드를 정리한 글."
-date: 2026-03-07
+date: "2026-03-07T00:00:06+09:00"
 tags:
   - quartz
   - comments

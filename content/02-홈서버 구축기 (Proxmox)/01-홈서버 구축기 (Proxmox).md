@@ -2,7 +2,7 @@
 title: 01. 홈서버 구축기 (Proxmox)
 description: 홈서버를 도입하게 된 배경과 하드웨어, Proxmox 선택 이유를 정리한 글
 socialDescription: AWS 비용 부담을 줄이기 위해 Proxmox 기반 홈서버를 기획하고 선택한 과정 정리
-date: 2026-03-07
+date: "2026-03-07T00:00:01+09:00"
 draft: false
 tags:
   - home-server

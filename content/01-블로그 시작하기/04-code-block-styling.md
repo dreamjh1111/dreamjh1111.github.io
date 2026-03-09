@@ -2,7 +2,7 @@
 title: 04. 코드 블럭을 macOS 터미널 스타일로 꾸미기
 description: Quartz v4의 코드 블럭에 macOS 트래픽 라이트, 언어 라벨, 다크 테마를 적용하는 과정 기록
 socialDescription: Quartz 블로그의 코드 블럭을 macOS 터미널 스타일로 커스터마이징한 전체 과정과 코드
-date: 2026-03-06
+date: "2026-03-06T00:00:04+09:00"
 tags:
   - quartz
   - css

@@ -2,7 +2,7 @@
 title: 04. 홈서버 구축기 (Proxmox)
 description: Ubuntu VM 생성 및 커스터마이징 과정을 정리한 글
 socialDescription: Proxmox 기반 Ubuntu VM 구축과 데스크톱/개발 환경 커스터마이징 기록
-date: 2026-03-07
+date: "2026-03-07T00:00:04+09:00"
 draft: false
 tags:
   - home-server

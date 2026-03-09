@@ -2,7 +2,7 @@
 title: 03. Quartz 블로그에 SEO 최적화 적용하기
 description: Quartz v4 블로그에 robots.txt, canonical, JSON-LD 구조화 데이터, 메타 태그를 직접 적용한 과정 기록
 socialDescription: Quartz 정적 블로그에 실무 SEO를 적용한 전체 과정과 코드 변경 내역 정리
-date: 2026-03-06
+date: "2026-03-06T00:00:03+09:00"
 tags:
   - seo
   - technical-seo
