@@ -52,7 +52,7 @@
   @media all and ($mobile) {
     order: -1;
     height: initial;
-    overflow: hidden;
+    overflow: visible;
     flex-shrink: 0;
     align-self: flex-start;
     margin-top: auto;
@@ -243,7 +243,7 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
     .explorer-content {
       box-sizing: border-box;
       z-index: 100;
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       margin-top: 0;
@@ -255,7 +255,11 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
         transform 200ms ease,
         visibility 200ms ease;
       overflow: hidden;
-      padding: 4rem 0 2rem 0;
+      padding:
+        calc(4.75rem + env(safe-area-inset-top, 0px))
+        1rem
+        2rem
+        calc(1rem + 2.75rem);
       height: 100dvh;
       max-height: 100dvh;
       visibility: hidden;

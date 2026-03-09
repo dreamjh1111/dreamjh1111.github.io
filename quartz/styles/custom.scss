@@ -109,6 +109,12 @@ hr {
 }
 
 .page > #quartz-body {
+  padding-inline: clamp(20px, 2.8vw, 40px);
+
+  @media all and ($mobile) {
+    padding-inline: clamp(20px, 4.5vw, 24px);
+  }
+
   @media all and not ($mobile) {
     .sidebar.left {
       background: color-mix(in srgb, var(--surface-1) 92%, transparent);
@@ -236,13 +242,76 @@ hr {
     border-radius: 8px;
     padding: 0.15rem 0.35rem;
   }
+
+  @media all and ($mobile) {
+    .sidebar.left {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: start;
+      column-gap: 0.75rem;
+      row-gap: 0.75rem;
+      width: 100%;
+      padding-top: 1.25rem;
+    }
+
+    .sidebar.left > .explorer {
+      grid-column: 1;
+      grid-row: 1;
+      align-self: start;
+      margin: 0;
+    }
+
+    .sidebar.left > .page-title {
+      grid-column: 2;
+      grid-row: 1;
+      min-width: 0;
+      align-self: center;
+    }
+
+    .sidebar.left > .page-title a {
+      display: block;
+      overflow-wrap: anywhere;
+      line-height: 1.15;
+    }
+
+    .sidebar.left > .flex-component {
+      grid-column: 3;
+      grid-row: 1;
+      align-self: start;
+      min-width: max-content;
+    }
+
+    .sidebar.left > .mobile-only {
+      display: none;
+    }
+
+    .sidebar.left .search {
+      min-width: 0;
+      max-width: 7.5rem;
+    }
+
+    .sidebar.left .search > .search-button {
+      padding-right: 0.75rem;
+    }
+
+    .sidebar.left .explorer .explorer-content {
+      margin-top: 0;
+      padding:
+        calc(4.75rem + env(safe-area-inset-top, 0px))
+        1rem
+        2rem
+        calc(1rem + 2.75rem);
+    }
+  }
 }
 
 /* Velog-like readability tuning */
 .page > #quartz-body {
+  --center-inline-gap: 25px;
+
   .center {
-    width: 100%;
-    max-width: 760px;
+    width: min(calc(100% - (var(--center-inline-gap) * 2)), 880px);
+    max-width: 880px;
     min-width: 0;
   }
 
@@ -318,8 +387,8 @@ hr {
 }
 
 // Responsive TOC placement:
-// - desktop (>=1200px): show TOC in right sidebar
-// - tablet/mobile (<1200px): show TOC above article content
+// - desktop (>=1400px): show TOC in right sidebar
+// - tablet/mobile (<1400px): show TOC above article content
 .page > #quartz-body {
   .center .page-header .toc {
     display: block;
@@ -329,40 +398,35 @@ hr {
     display: block;
   }
 
-  @media all and (min-width: 1200px) {
+  @media all and ($desktop) {
     .center .page-header .toc {
       display: none;
     }
   }
 
-  @media all and (max-width: 1199px) {
-    padding-inline: clamp(16px, 2.4vw, 24px);
-
+  @media all and not ($desktop) {
     .center,
     footer {
-      max-width: 768px;
+      max-width: 860px;
       min-width: 0;
     }
 
     @media all and (min-width: 801px) {
       .center,
       footer {
-        // Keep a visible gutter on the right in tablet range.
-        width: min(calc(100% - clamp(16px, 2.2vw, 24px)), 768px);
-        margin-left: 0;
+        width: min(calc(100% - (var(--center-inline-gap) * 2)), 860px);
+        margin-left: auto;
         margin-right: auto;
       }
     }
 
     @media all and (max-width: 800px) {
-      padding-inline: clamp(16px, 4vw, 20px);
-
       .center,
       footer {
-        width: 100%;
+        width: min(calc(100% - (var(--center-inline-gap) * 2)), 100%);
         max-width: 100%;
-        margin-left: 0;
-        margin-right: 0;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
 
@@ -381,60 +445,6 @@ hr {
       overscroll-behavior: auto;
       touch-action: pan-y;
       -webkit-overflow-scrolling: touch;
-    }
-  }
-
-  // Compact desktop (1200px-1399px):
-  // Avoid overlap by using a tablet-like right sidebar flow.
-  @media all and (min-width: 1200px) and (max-width: 1399px) {
-    padding: 0 clamp(16px, 2.6vw, 32px) 0 clamp(8px, 1.2vw, 16px);
-    column-gap: clamp(12px, 1.6vw, 20px);
-    grid-template-columns: minmax(240px, 280px) minmax(0, 1fr);
-    grid-template-rows: auto auto auto auto;
-    grid-template-areas:
-      "grid-sidebar-left grid-header"
-      "grid-sidebar-left grid-center"
-      "grid-sidebar-left grid-sidebar-right"
-      "grid-sidebar-left grid-footer";
-
-    .center {
-      width: min(100%, 768px);
-      max-width: 768px;
-      min-width: 0;
-      margin-left: 0;
-      margin-right: auto;
-    }
-
-    .center .page-header .toc {
-      display: block;
-      max-height: 70dvh;
-      overflow: hidden;
-    }
-
-    .center .page-header .toc .toc-content.overflow {
-      max-height: calc(70dvh - 2rem);
-      overscroll-behavior: auto;
-      touch-action: pan-y;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .sidebar.right {
-      position: initial;
-      height: unset;
-      width: 100%;
-      flex-direction: row;
-      padding: 0;
-      margin-left: inherit;
-      margin-right: inherit;
-    }
-
-    .sidebar.right > * {
-      flex: 1;
-      max-height: 24rem;
-    }
-
-    .sidebar.right > .toc {
-      display: none;
     }
   }
 }
