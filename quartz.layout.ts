@@ -89,7 +89,14 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     Component.Explorer(),
   ],
-  right: [Component.Graph(), Component.TableOfContents(), Component.Backlinks()],
+  right: [
+    Component.ConditionalRender({
+      component: Component.Graph(),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
+    Component.TableOfContents(),
+    Component.Backlinks(),
+  ],
 }
 
 export const defaultListPageLayout: PageLayout = {
