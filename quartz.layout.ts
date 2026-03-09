@@ -15,6 +15,10 @@ export const sharedPageComponents: SharedLayout = {
   header: [],
   afterBody: [
     Component.ConditionalRender({
+      component: Component.HomePostList(),
+      condition: (page) => page.fileData.slug === "index",
+    }),
+    Component.ConditionalRender({
       component: Component.Comments({
         provider: "giscus",
         options: {
@@ -29,11 +33,15 @@ export const sharedPageComponents: SharedLayout = {
           inputPosition: "bottom",
         },
       }),
-      condition: (page) =>
-        page.fileData.slug !== "index" &&
-        page.fileData.slug !== "404" &&
-        !page.fileData.slug.startsWith("tags/") &&
-        !page.fileData.slug.endsWith("/index"),
+      condition: (page) => {
+        const slug = page.fileData.slug ?? ""
+        return (
+          slug !== "index" &&
+          slug !== "404" &&
+          !slug.startsWith("tags/") &&
+          !slug.endsWith("/index")
+        )
+      },
     }),
   ],
   footer: Component.Footer({
@@ -49,10 +57,22 @@ export const defaultContentPageLayout: PageLayout = {
       component: Component.Breadcrumbs(),
       condition: (page) => page.fileData.slug !== "index",
     }),
-    Component.ArticleTitle(),
-    Component.ContentMeta(),
-    Component.TableOfContents(),
-    Component.TagList(),
+    Component.ConditionalRender({
+      component: Component.ArticleTitle(),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
+    Component.ConditionalRender({
+      component: Component.ContentMeta(),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
+    Component.ConditionalRender({
+      component: Component.TableOfContents(),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
+    Component.ConditionalRender({
+      component: Component.TagList(),
+      condition: (page) => page.fileData.slug !== "index",
+    }),
   ],
   left: [
     Component.PageTitle(),
@@ -69,11 +89,7 @@ export const defaultContentPageLayout: PageLayout = {
     }),
     Component.Explorer(),
   ],
-  right: [
-    Component.Graph(),
-    Component.TableOfContents(),
-    Component.Backlinks(),
-  ],
+  right: [Component.Graph(), Component.TableOfContents(), Component.Backlinks()],
 }
 
 export const defaultListPageLayout: PageLayout = {
