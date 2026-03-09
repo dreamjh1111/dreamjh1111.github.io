@@ -294,6 +294,10 @@ hr {
       padding-right: 0.75rem;
     }
 
+    .sidebar.left .readermode {
+      display: none;
+    }
+
     .sidebar.left .explorer .explorer-content {
       margin-top: 0;
       padding:
