@@ -1,44 +1,93 @@
-param(
-  [double]$IntervalSeconds = 1
+﻿param(
+  [double]$IntervalSeconds = 1,
+  [int]$MaxSamples = 0
 )
 
-$ErrorActionPreference = "SilentlyContinue"
+if ($IntervalSeconds -le 0) {
+  Write-Error "IntervalSeconds must be greater than 0."
+  exit 1
+}
 
-function Get-PrimaryCimInstance {
+if ($MaxSamples -lt 0) {
+  Write-Error "MaxSamples cannot be negative."
+  exit 1
+}
+
+$ErrorActionPreference = "SilentlyContinue"
+[Console]::InputEncoding = [System.Text.UTF8Encoding]::new($false)
+[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
+$OutputEncoding = [Console]::OutputEncoding
+
+function Get-ClassInstances {
   param(
     [string]$Namespace,
     [string]$ClassName
   )
 
   try {
-    $instances = Get-CimInstance -Namespace $Namespace -ClassName $ClassName
-    if ($null -eq $instances) {
-      return $null
+    $instances = @(Get-CimInstance -Namespace $Namespace -ClassName $ClassName)
+    if ($instances.Count -gt 0) {
+      return $instances
     }
-
-    if ($instances -is [array]) {
-      return $instances | Select-Object -First 1
-    }
-
-    return $instances
   } catch {
-    return $null
+  }
+
+  $wmiCommand = Get-Command Get-WmiObject -ErrorAction SilentlyContinue
+  if ($null -eq $wmiCommand) {
+    return @()
+  }
+
+  try {
+    return @(Get-WmiObject -Namespace $Namespace -Class $ClassName)
+  } catch {
+    return @()
   }
 }
 
+function Get-PrimaryInstance {
+  param(
+    [string]$Namespace,
+    [string]$ClassName
+  )
+
+  $instances = @(Get-ClassInstances -Namespace $Namespace -ClassName $ClassName)
+  if (-not $instances) {
+    return $null
+  }
+
+  return $instances | Select-Object -First 1
+}
+
 function Get-BatteryStatusInstance {
+  $instances = @(Get-ClassInstances -Namespace "root\wmi" -ClassName "BatteryStatus")
+  if (-not $instances) {
+    return $null
+  }
+
+  $primary = $instances |
+    Where-Object {
+      $_.Active -eq $true -or
+      $_.PowerOnline -eq $true -or
+      (To-DoubleOrNull $_.Voltage) -gt 0
+    } |
+    Select-Object -First 1
+
+  if ($null -ne $primary) {
+    return $primary
+  }
+
+  return $instances | Select-Object -First 1
+}
+
+function To-DoubleOrNull {
+  param($Value)
+
+  if ($null -eq $Value -or $Value -eq "") {
+    return $null
+  }
+
   try {
-    $instances = @(Get-CimInstance -Namespace "root\wmi" -ClassName "BatteryStatus")
-    if (-not $instances) {
-      return $null
-    }
-
-    $primary = $instances | Where-Object { $_.Active -eq $true -or $_.Voltage -gt 0 } | Select-Object -First 1
-    if ($null -ne $primary) {
-      return $primary
-    }
-
-    return $instances | Select-Object -First 1
+    return [double]$Value
   } catch {
     return $null
   }
@@ -49,7 +98,7 @@ function To-KoreanYesNo {
 
   if ($Value -eq $true) { return "예" }
   if ($Value -eq $false) { return "아니오" }
-  return "알 수 없음"
+  return "-"
 }
 
 function To-KoreanBatteryCondition {
@@ -61,7 +110,7 @@ function To-KoreanBatteryCondition {
     "Pred Fail" { return "고장 예측" }
     default {
       if ([string]::IsNullOrWhiteSpace($Value)) {
-        return "알 수 없음"
+        return "-"
       }
       return $Value
     }
@@ -90,11 +139,11 @@ function To-KoreanChargeState {
       8 { return "충전 중" }
       9 { return "충전 중" }
       11 { return "부분 충전" }
-      default { return "알 수 없음" }
+      default { return "-" }
     }
   }
 
-  return "알 수 없음"
+  return "-"
 }
 
 function Format-ScaledValue {
@@ -123,7 +172,7 @@ function Format-ValueOrUnknown {
   )
 
   if ($null -eq $Value -or $Value -eq "") {
-    return "알 수 없음"
+    return "-"
   }
 
   return "$Value$Suffix"
@@ -133,18 +182,68 @@ function Format-WattsOrUnknown {
   param($Value)
 
   if ($null -eq $Value -or $Value -eq "") {
-    return "알 수 없음"
+    return "-"
   }
 
   return "$(Format-Percent -Value $Value -Decimals 2) W"
 }
 
+function Format-AmpsOrUnknown {
+  param(
+    $Value,
+    [switch]$Estimated
+  )
+
+  if ($null -eq $Value -or $Value -eq "") {
+    return "-"
+  }
+
+  $label = "$(Format-Percent -Value $Value -Decimals 3) A"
+  if ($Estimated) {
+    return "$label (배터리 전력/전압 기반 추정)"
+  }
+
+  return $label
+}
+
+function Get-SignedBatteryCurrentA {
+  param(
+    [double]$ChargeWatts,
+    [double]$DischargeWatts,
+    [double]$VoltageMv
+  )
+
+  if ($VoltageMv -le 0) {
+    return $null
+  }
+
+  $voltageV = $VoltageMv / 1000
+  if ($voltageV -le 0) {
+    return $null
+  }
+
+  $chargeCurrentA = 0
+  $dischargeCurrentA = 0
+
+  if ($ChargeWatts -gt 0) {
+    $chargeCurrentA = $ChargeWatts / $voltageV
+  }
+
+  if ($DischargeWatts -gt 0) {
+    $dischargeCurrentA = $DischargeWatts / $voltageV
+  }
+
+  return $chargeCurrentA - $dischargeCurrentA
+}
+
+$sampleCount = 0
+
 while ($true) {
   $batteryStatus = Get-BatteryStatusInstance
-  $batteryStatic = Get-PrimaryCimInstance -Namespace "root\wmi" -ClassName "BatteryStaticData"
-  $batteryFull = Get-PrimaryCimInstance -Namespace "root\wmi" -ClassName "BatteryFullChargedCapacity"
-  $batteryCycle = Get-PrimaryCimInstance -Namespace "root\wmi" -ClassName "BatteryCycleCount"
-  $portableBattery = Get-PrimaryCimInstance -Namespace "root\cimv2" -ClassName "Win32_Battery"
+  $batteryStatic = Get-PrimaryInstance -Namespace "root\wmi" -ClassName "BatteryStaticData"
+  $batteryFull = Get-PrimaryInstance -Namespace "root\wmi" -ClassName "BatteryFullChargedCapacity"
+  $batteryCycle = Get-PrimaryInstance -Namespace "root\wmi" -ClassName "BatteryCycleCount"
+  $portableBattery = Get-PrimaryInstance -Namespace "root\cimv2" -ClassName "Win32_Battery"
 
   $remainingCapacity = $null
   $fullChargedCapacity = $null
@@ -157,31 +256,32 @@ while ($true) {
   $wearPercent = $null
   $cycleCount = $null
   $powerOnline = $null
-  $charging = $null
-  $discharging = $null
   $fullyCharged = $null
   $batteryCondition = $null
 
   if ($null -ne $batteryStatus) {
-    $remainingCapacity = $batteryStatus.RemainingCapacity
-    $batteryVoltageMv = $batteryStatus.Voltage
+    $remainingCapacity = To-DoubleOrNull $batteryStatus.RemainingCapacity
+    $batteryVoltageMv = To-DoubleOrNull $batteryStatus.Voltage
     $powerOnline = $batteryStatus.PowerOnline
-    $charging = $batteryStatus.Charging
-    $discharging = $batteryStatus.Discharging
-    if ($batteryStatus.ChargeRate -gt 0) {
-      $chargeRateMw = [double]$batteryStatus.ChargeRate
+
+    $rawChargeRate = To-DoubleOrNull $batteryStatus.ChargeRate
+    $rawDischargeRate = To-DoubleOrNull $batteryStatus.DischargeRate
+
+    if ($rawChargeRate -gt 0) {
+      $chargeRateMw = $rawChargeRate
     }
-    if ($batteryStatus.DischargeRate -gt 0) {
-      $dischargeRateMw = [double]$batteryStatus.DischargeRate
+
+    if ($rawDischargeRate -gt 0) {
+      $dischargeRateMw = $rawDischargeRate
     }
   }
 
   if ($null -ne $batteryFull) {
-    $fullChargedCapacity = $batteryFull.FullChargedCapacity
+    $fullChargedCapacity = To-DoubleOrNull $batteryFull.FullChargedCapacity
   }
 
   if ($null -ne $batteryStatic) {
-    $designedCapacity = $batteryStatic.DesignedCapacity
+    $designedCapacity = To-DoubleOrNull $batteryStatic.DesignedCapacity
   }
 
   if ($null -ne $batteryCycle) {
@@ -190,7 +290,7 @@ while ($true) {
 
   if ($null -ne $portableBattery) {
     if ($null -eq $batteryLevelPercent -and $portableBattery.EstimatedChargeRemaining -ne $null) {
-      $batteryLevelPercent = [double]$portableBattery.EstimatedChargeRemaining
+      $batteryLevelPercent = To-DoubleOrNull $portableBattery.EstimatedChargeRemaining
     }
     $batteryCondition = $portableBattery.Status
   }
@@ -201,110 +301,112 @@ while ($true) {
 
   if ($designedCapacity -gt 0 -and $fullChargedCapacity -gt 0) {
     $healthPercent = ($fullChargedCapacity / $designedCapacity) * 100
-    $wearPercent = 100 - $healthPercent
+    $wearPercent = [math]::Max(0, (100 - $healthPercent))
   }
 
   if ($null -ne $batteryLevelPercent) {
     $fullyCharged = ($batteryLevelPercent -ge 99.5)
   }
 
-  $adapterInputW = $null
-  $systemLoadW = $null
-  $bypassW = $null
-  $batteryChargeW = $null
-  $batteryDischargeW = $null
+  $batteryChargeW = 0
+  $batteryDischargeW = 0
   $batteryNetW = $null
+  $batteryCurrentA = $null
 
   if ($chargeRateMw -gt 0) {
     $batteryChargeW = $chargeRateMw / 1000
-    $batteryNetW = $batteryChargeW
-  } else {
-    $batteryChargeW = 0
   }
 
   if ($dischargeRateMw -gt 0) {
     $batteryDischargeW = $dischargeRateMw / 1000
-    if ($batteryChargeW -gt 0) {
-      $batteryNetW = $batteryChargeW - $batteryDischargeW
-    } else {
-      $batteryNetW = -1 * $batteryDischargeW
-    }
-  } else {
-    $batteryDischargeW = 0
   }
 
-  if ($powerOnline -eq $false) {
-    $adapterInputW = 0
-    $systemLoadW = $batteryDischargeW
-    $bypassW = 0
+  if ($chargeRateMw -gt 0 -or $dischargeRateMw -gt 0) {
+    $batteryNetW = $batteryChargeW - $batteryDischargeW
+  }
+
+  if ($batteryVoltageMv -gt 0) {
+    $batteryCurrentA = Get-SignedBatteryCurrentA -ChargeWatts $batteryChargeW -DischargeWatts $batteryDischargeW -VoltageMv $batteryVoltageMv
   }
 
   Clear-Host
-  Write-Host "Windows 충전 모니터"
+  Write-Host "Windows 배터리 모니터"
   Write-Host "업데이트: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
   Write-Host ""
 
-  Write-Host "[전원 상태]"
-  Write-Host "외부 전원 연결: $(To-KoreanYesNo $powerOnline)"
-  Write-Host "배터리 충전 상태: $(To-KoreanChargeState -Status $batteryStatus -PortableBattery $portableBattery)"
-  Write-Host "완전 충전 여부: $(To-KoreanYesNo $fullyCharged)"
+  $powerStatusLines = @()
+  if ($powerOnline -ne $null) {
+    $powerStatusLines += "외부 전원 연결: $(To-KoreanYesNo $powerOnline)"
+  }
+  $chargeState = To-KoreanChargeState -Status $batteryStatus -PortableBattery $portableBattery
+  if ($chargeState -ne "-") {
+    $powerStatusLines += "배터리 충전 상태: $chargeState"
+  }
+  if ($fullyCharged -ne $null) {
+    $powerStatusLines += "완전 충전 여부: $(To-KoreanYesNo $fullyCharged)"
+  }
   if ($batteryLevelPercent -ne $null) {
-    Write-Host "배터리 잔량: $(Format-Percent -Value $batteryLevelPercent -Decimals 0)%"
-  } else {
-    Write-Host "배터리 잔량: 알 수 없음"
+    $powerStatusLines += "배터리 잔량: $(Format-Percent -Value $batteryLevelPercent -Decimals 0)%"
   }
-  Write-Host "배터리 상태: $(To-KoreanBatteryCondition $batteryCondition)"
-  Write-Host "사이클 수: $(Format-ValueOrUnknown $cycleCount)"
+  $batteryConditionText = To-KoreanBatteryCondition $batteryCondition
+  if ($batteryConditionText -ne "-") {
+    $powerStatusLines += "배터리 상태: $batteryConditionText"
+  }
+  if ($cycleCount -ne $null -and $cycleCount -ne "") {
+    $powerStatusLines += "사이클 수: $cycleCount"
+  }
   if ($healthPercent -ne $null) {
-    Write-Host "배터리 건강도: $(Format-Percent -Value $healthPercent)% (Windows 배터리 WMI 기준)"
-    Write-Host "배터리 웨어율: $(Format-Percent -Value $wearPercent)%"
-  } else {
-    Write-Host "배터리 건강도: 알 수 없음"
-    Write-Host "배터리 웨어율: 알 수 없음"
+    $powerStatusLines += "배터리 건강도: $(Format-Percent -Value $healthPercent)% (Windows 배터리 WMI 기준)"
   }
-  Write-Host "설계 용량: $(Format-ValueOrUnknown $designedCapacity ' mWh')"
-  Write-Host "현재 최대 충전 용량: $(Format-ValueOrUnknown $fullChargedCapacity ' mWh')"
-
-  Write-Host ""
-  Write-Host "[전력 흐름]"
-  Write-Host "어댑터 총 입력 전력: $(Format-WattsOrUnknown $adapterInputW)"
-  Write-Host "시스템 전체 소비 전력: $(Format-WattsOrUnknown $systemLoadW)"
-  Write-Host "직결 사용 전력(bypass): $(Format-WattsOrUnknown $bypassW)"
-  Write-Host "배터리 충전 전력: $(Format-Percent -Value $batteryChargeW -Decimals 2) W"
-  Write-Host "배터리 사용 전력: $(Format-Percent -Value $batteryDischargeW -Decimals 2) W"
-
-  Write-Host ""
-  Write-Host "[실시간 수치]"
-  if ($powerOnline -eq $true) {
-    Write-Host "어댑터 입력 전류: 알 수 없음 (표준 Windows WMI 미제공)"
-    Write-Host "어댑터 입력 전압: 알 수 없음 (표준 Windows WMI 미제공)"
-  } else {
-    Write-Host "어댑터 입력 전류: 0.000 A"
-    Write-Host "어댑터 입력 전압: 0.000 V"
+  if ($wearPercent -ne $null) {
+    $powerStatusLines += "배터리 웨어율: $(Format-Percent -Value $wearPercent)%"
   }
-  if ($batteryStatus -ne $null -and $batteryVoltageMv -gt 0) {
-    Write-Host "배터리 전류: 알 수 없음 (표준 Windows WMI 미제공)"
-    Write-Host "배터리 전압: $(Format-ScaledValue -Value $batteryVoltageMv -Divisor 1000 -Decimals 3) V"
-  } else {
-    Write-Host "배터리 전류: 알 수 없음"
-    Write-Host "배터리 전압: 알 수 없음"
+  if ($designedCapacity -ne $null) {
+    $powerStatusLines += "설계 용량: $designedCapacity mWh"
+  }
+  if ($fullChargedCapacity -ne $null) {
+    $powerStatusLines += "현재 최대 충전 용량: $fullChargedCapacity mWh"
+  }
+  if ($powerStatusLines.Count -gt 0) {
+    Write-Host "[전원 상태]"
+    $powerStatusLines | ForEach-Object { Write-Host $_ }
+    Write-Host ""
+  }
+
+  $batteryPowerLines = @(
+    "배터리 충전 전력: $(Format-Percent -Value $batteryChargeW -Decimals 2) W",
+    "배터리 방전 전력: $(Format-Percent -Value $batteryDischargeW -Decimals 2) W"
+  )
+  if ($batteryNetW -ne $null) {
+    $batteryPowerLines += "배터리 순전력: $(Format-Percent -Value $batteryNetW -Decimals 2) W"
+  }
+  Write-Host "[배터리 전력]"
+  $batteryPowerLines | ForEach-Object { Write-Host $_ }
+  Write-Host ""
+
+  $liveMetricLines = @()
+  if ($batteryCurrentA -ne $null) {
+    $liveMetricLines += "배터리 전류: $(Format-AmpsOrUnknown -Value $batteryCurrentA -Estimated)"
+  }
+  if ($batteryVoltageMv -gt 0) {
+    $liveMetricLines += "배터리 전압: $(Format-ScaledValue -Value $batteryVoltageMv -Divisor 1000 -Decimals 3) V"
   }
   if ($batteryNetW -ne $null) {
-    Write-Host "배터리 순전력: $(Format-Percent -Value $batteryNetW -Decimals 2) W"
-  } else {
-    Write-Host "배터리 순전력: 알 수 없음"
+    $liveMetricLines += "배터리 전력 텔레메트리: $(Format-Percent -Value $batteryNetW -Decimals 2) W"
   }
-  Write-Host "배터리 전력 텔레메트리: $(Format-Percent -Value ($batteryChargeW - $batteryDischargeW) -Decimals 2) W"
+  if ($liveMetricLines.Count -gt 0) {
+    Write-Host "[실시간 수치]"
+    $liveMetricLines | ForEach-Object { Write-Host $_ }
+    Write-Host ""
+  }
 
-  Write-Host ""
-  Write-Host "[충전기 협상 프로필]"
-  Write-Host "최대 전류: 알 수 없음 (표준 Windows WMI 미제공)"
-  Write-Host "최대 전압: 알 수 없음 (표준 Windows WMI 미제공)"
-  Write-Host "최대 전력: 알 수 없음 (표준 Windows WMI 미제공)"
+  Write-Host "참고: 이 스크립트는 순수 Windows 기본 인터페이스만 사용합니다."
+  Write-Host "참고: 따라서 배터리 측 전력/전압은 볼 수 있지만, 어댑터 측 전압/전류/PD 협상값은 볼 수 없습니다."
 
-  Write-Host ""
-  Write-Host "참고: Windows 표준 배터리 WMI는 기기마다 제공 항목이 다릅니다."
-  Write-Host "참고: 어댑터 총 입력 전력과 bypass 전력은 OEM 센서가 없으면 정확히 구할 수 없습니다."
+  $sampleCount += 1
+  if ($MaxSamples -gt 0 -and $sampleCount -ge $MaxSamples) {
+    break
+  }
 
   Start-Sleep -Seconds $IntervalSeconds
 }

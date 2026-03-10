@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">Windows Terminal settings UI illustration</title>
+  <desc id="desc">A stylized illustration of the Windows Terminal settings screen with a sidebar and keybinding editor panels.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect x="60" y="50" width="1160" height="620" rx="22" fill="#0b1220" stroke="#334155" stroke-width="2"/>
+  <rect x="60" y="50" width="1160" height="48" rx="22" fill="#111827"/>
+  <circle cx="95" cy="74" r="8" fill="#fb7185"/>
+  <circle cx="123" cy="74" r="8" fill="#fbbf24"/>
+  <circle cx="151" cy="74" r="8" fill="#4ade80"/>
+  <text x="190" y="80" fill="#dbeafe" font-size="22" font-family="Segoe UI, Arial, sans-serif">Windows Terminal Settings</text>
+
+  <rect x="88" y="126" width="262" height="510" rx="16" fill="url(#panel)" stroke="#334155"/>
+  <text x="118" y="170" fill="#93c5fd" font-size="20" font-family="Segoe UI, Arial, sans-serif">Settings</text>
+
+  <rect x="106" y="196" width="226" height="50" rx="12" fill="#1d4ed8" opacity="0.95"/>
+  <text x="126" y="227" fill="#eff6ff" font-size="18" font-family="Segoe UI, Arial, sans-serif">Actions</text>
+
+  <rect x="106" y="258" width="226" height="42" rx="10" fill="#111827" stroke="#334155"/>
+  <text x="126" y="285" fill="#cbd5e1" font-size="17" font-family="Segoe UI, Arial, sans-serif">Startup</text>
+
+  <rect x="106" y="312" width="226" height="42" rx="10" fill="#111827" stroke="#334155"/>
+  <text x="126" y="339" fill="#cbd5e1" font-size="17" font-family="Segoe UI, Arial, sans-serif">Appearance</text>
+
+  <rect x="106" y="366" width="226" height="42" rx="10" fill="#111827" stroke="#334155"/>
+  <text x="126" y="393" fill="#cbd5e1" font-size="17" font-family="Segoe UI, Arial, sans-serif">Profiles</text>
+
+  <rect x="380" y="126" width="808" height="510" rx="16" fill="url(#panel)" stroke="#334155"/>
+  <text x="418" y="170" fill="#e5e7eb" font-size="28" font-family="Segoe UI, Arial, sans-serif">Key bindings</text>
+  <text x="418" y="202" fill="#94a3b8" font-size="17" font-family="Segoe UI, Arial, sans-serif">iTerm-style workflow mapped into Windows Terminal actions</text>
+
+  <rect x="418" y="232" width="732" height="68" rx="12" fill="#0f172a" stroke="#334155"/>
+  <text x="446" y="273" fill="#e2e8f0" font-size="19" font-family="Consolas, monospace">Split pane, duplicate</text>
+  <rect x="960" y="247" width="160" height="38" rx="10" fill="#1e293b" stroke="#475569"/>
+  <text x="995" y="272" fill="#93c5fd" font-size="18" font-family="Consolas, monospace">Ctrl + D</text>
+
+  <rect x="418" y="316" width="732" height="68" rx="12" fill="#0f172a" stroke="#334155"/>
+  <text x="446" y="357" fill="#e2e8f0" font-size="19" font-family="Consolas, monospace">Split pane down</text>
+  <rect x="930" y="331" width="190" height="38" rx="10" fill="#1e293b" stroke="#475569"/>
+  <text x="949" y="356" fill="#93c5fd" font-size="18" font-family="Consolas, monospace">Ctrl + Shift + D</text>
+
+  <rect x="418" y="400" width="354" height="92" rx="12" fill="#0f172a" stroke="#334155"/>
+  <text x="446" y="438" fill="#e2e8f0" font-size="19" font-family="Consolas, monospace">Move focus previous</text>
+  <rect x="446" y="452" width="130" height="28" rx="8" fill="#1e293b" stroke="#475569"/>
+  <text x="473" y="472" fill="#93c5fd" font-size="16" font-family="Consolas, monospace">Ctrl + [</text>
+
+  <rect x="796" y="400" width="354" height="92" rx="12" fill="#0f172a" stroke="#334155"/>
+  <text x="824" y="438" fill="#e2e8f0" font-size="19" font-family="Consolas, monospace">Move focus next</text>
+  <rect x="824" y="452" width="130" height="28" rx="8" fill="#1e293b" stroke="#475569"/>
+  <text x="851" y="472" fill="#93c5fd" font-size="16" font-family="Consolas, monospace">Ctrl + ]</text>
+
+  <rect x="418" y="508" width="354" height="92" rx="12" fill="#0f172a" stroke="#334155"/>
+  <text x="446" y="546" fill="#e2e8f0" font-size="19" font-family="Consolas, monospace">Find text</text>
+  <rect x="446" y="560" width="170" height="28" rx="8" fill="#1e293b" stroke="#475569"/>
+  <text x="467" y="580" fill="#93c5fd" font-size="16" font-family="Consolas, monospace">Ctrl + Shift + F</text>
+
+  <rect x="796" y="508" width="354" height="92" rx="12" fill="#0f172a" stroke="#334155"/>
+  <text x="824" y="546" fill="#e2e8f0" font-size="19" font-family="Consolas, monospace">Copy / Paste</text>
+  <rect x="824" y="560" width="150" height="28" rx="8" fill="#1e293b" stroke="#475569"/>
+  <text x="848" y="580" fill="#93c5fd" font-size="16" font-family="Consolas, monospace">Ctrl + C / V</text>
+</svg>
