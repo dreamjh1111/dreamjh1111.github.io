@@ -1,5 +1,5 @@
 ---
-title: 왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기
+title: 01. 왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기
 description: DB를 왜 공부해야 하는지부터 InnoDB, 트랜잭션, MVCC, 락, 데드락까지 입문자 기준으로 쉽게 정리한 글
 socialDescription: MySQL InnoDB의 기본 개념과 트랜잭션, MVCC, 락, 데드락을 예제와 머메이드 도식으로 쉽게 정리한 입문 글
 date: 2026-03-10T17:49:21+09:00
