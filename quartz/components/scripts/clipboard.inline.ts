@@ -61,6 +61,7 @@ document.addEventListener("nav", () => {
 
     const codeBlock = els[i].getElementsByTagName("code")[0]
     if (codeBlock) {
+      const isMermaid = codeBlock.classList.contains("mermaid")
       const source = (
         codeBlock.dataset.clipboard ? JSON.parse(codeBlock.dataset.clipboard) : codeBlock.innerText
       ).replace(/\n\n/g, "\n")
@@ -69,11 +70,17 @@ document.addEventListener("nav", () => {
       const lang = codeBlock.getAttribute("data-language") ?? els[i].getAttribute("data-language") ?? ""
       normalizeCodeLines(codeBlock)
       wrapCodeBody(codeBlock)
-      els[i].classList.add("mac-codeblock", "hljs")
+      if (!isMermaid) {
+        els[i].classList.add("mac-codeblock", "hljs")
+      }
       if (lang) {
         els[i].setAttribute("data-ke-language", lang.toUpperCase())
       } else {
         els[i].removeAttribute("data-ke-language")
+      }
+
+      if (isMermaid) {
+        continue
       }
 
       // Create macOS-style header

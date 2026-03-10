@@ -28,7 +28,7 @@ tags:
 ## 전체 흐름 한눈에 보기
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[사용자 브라우저<br/>practice.com 접속] --> B[DNS 조회<br/>Route53]
     B --> C[공인 IP 반환]
     C --> D[집 공유기]

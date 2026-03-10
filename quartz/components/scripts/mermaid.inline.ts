@@ -250,11 +250,14 @@ document.addEventListener("nav", async () => {
     const clipboardBtn = pre.querySelector(".clipboard-button") as HTMLButtonElement
     const expandBtn = pre.querySelector(".expand-button") as HTMLButtonElement
 
-    const clipboardStyle = window.getComputedStyle(clipboardBtn)
-    const clipboardWidth =
-      clipboardBtn.offsetWidth +
-      parseFloat(clipboardStyle.marginLeft || "0") +
-      parseFloat(clipboardStyle.marginRight || "0")
+    let clipboardWidth = 0
+    if (clipboardBtn) {
+      const clipboardStyle = window.getComputedStyle(clipboardBtn)
+      clipboardWidth =
+        clipboardBtn.offsetWidth +
+        parseFloat(clipboardStyle.marginLeft || "0") +
+        parseFloat(clipboardStyle.marginRight || "0")
+    }
 
     // Set expand button position
     expandBtn.style.right = `calc(${clipboardWidth}px + 0.3rem)`

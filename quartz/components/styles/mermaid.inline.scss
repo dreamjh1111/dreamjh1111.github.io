@@ -1,3 +1,5 @@
+@use "../../styles/variables.scss" as *;
+
 .expand-button {
   position: absolute;
   display: flex;
@@ -10,7 +12,7 @@
   background-color: var(--light);
   border: 1px solid;
   border-radius: 5px;
-  opacity: 0;
+  opacity: 1;
   transition: 0.2s;
 
   & > svg {
@@ -32,6 +34,46 @@ pre {
   &:hover > .expand-button {
     opacity: 1;
     transition: 0.2s;
+  }
+}
+
+pre:has(> code.mermaid) {
+  padding: 1rem;
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--surface-1, var(--light)) 92%, var(--surface-2, var(--lightgray)) 8%);
+  border: 1px solid var(--lightgray);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+
+  & > .code-header,
+  & > .clipboard-button {
+    display: none !important;
+  }
+
+  & > code.mermaid {
+    display: block;
+    padding: 0;
+    overflow: visible;
+    background: transparent !important;
+  }
+
+  & > code.mermaid svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+
+  & > .expand-button {
+    top: 0.75rem;
+    right: 0.75rem !important;
+    border-color: var(--lightgray);
+    background-color: var(--light);
+    opacity: 1;
+  }
+
+  @media all and ($mobile) {
+    padding: 0.75rem;
+    border-radius: 12px;
   }
 }
 
