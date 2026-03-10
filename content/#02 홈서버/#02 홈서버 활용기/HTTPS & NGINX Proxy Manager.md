@@ -102,6 +102,8 @@ test.example.com
 와일드카드 인증서만 발급받을 수 있다면 어느 서버에서 진행해도 괜찮다.  
 여기서는 홈서버에 이미 구성해 둔 `Synology` 환경을 사용했다.
 
+![[attachfiles/npm-synology-docker-manager.png]]
+
 ### Synology 이용 방법
 
 진행 순서는 단순하다.
@@ -110,6 +112,14 @@ test.example.com
 2. `jc21/nginx-proxy-manager` 이미지를 내려받는다.
 3. 컨테이너를 생성하면서 필요한 포트와 볼륨을 연결한다.
 4. NAS의 `81` 포트로 접속해서 관리자 화면에 로그인한다.
+
+![[attachfiles/npm-container-create-1.png]]
+
+![[attachfiles/npm-container-create-2.png]]
+
+![[attachfiles/npm-container-create-3.png]]
+
+![[attachfiles/npm-container-create-4.png]]
 
 최초 로그인 정보는 다음과 같다.
 
@@ -120,11 +130,15 @@ password: changeme
 
 처음 접속하면 이메일과 비밀번호를 바꾸게 되고, 이후부터는 GUI에서 프록시 호스트와 SSL 인증서를 관리할 수 있다.
 
+![[attachfiles/npm-dashboard.png]]
+
 ## SSL 와일드카드 인증서 발급받기
 
 이제 NGINX Proxy Manager 안에서 실제 인증서를 발급받는다.
 
 흐름은 다음과 같다.
+
+![[attachfiles/npm-ssl-certificates.png]]
 
 1. 상단 메뉴에서 `SSL Certificates`로 이동한다.
 2. `Add SSL Certificate`를 선택한다.
@@ -134,6 +148,8 @@ password: changeme
 5. `DNS Provider`를 `Route 53 (Amazon)`으로 변경한다.
 6. `Credentials File Content`에 AWS Access Key와 Secret Access Key를 입력한다.
 7. 저장하면 DNS 검증을 통해 와일드카드 인증서가 발급된다.
+
+![[attachfiles/npm-add-ssl-certificate.png]]
 
 여기서 중요한 점은 HTTP 포트를 통한 검증이 아니라 `DNS Challenge`를 사용한다는 것이다.  
 그래서 집 회선에서 `80` 포트가 막혀 있어도 AWS Route53을 통해 인증서 발급이 가능하다.
@@ -153,6 +169,8 @@ password: changeme
 ```text
 docker/NPM/letsencrypt/archive/npm-7/
 ```
+
+![[attachfiles/npm-certificate-files.png]]
 
 이 경로를 기반으로 이후 다른 서비스에 인증서를 적용하거나, 인증서 자동 갱신 흐름을 정리할 수 있다.
 
