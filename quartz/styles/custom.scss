@@ -313,6 +313,10 @@ hr {
 .page > #quartz-body {
   --center-inline-gap: 25px;
 
+  @media all and ($mobile) {
+    --center-inline-gap: 10px;
+  }
+
   .center {
     width: min(calc(100% - (var(--center-inline-gap) * 2)), 880px);
     max-width: 880px;
