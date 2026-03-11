@@ -1,5 +1,5 @@
 ---
-title: Next-Key Lock이란 무엇인가 - MySQL이 행 하나가 아니라 범위까지 잠그는 이유
+title: 03. Next-Key Lock이란 무엇인가 - MySQL이 행 하나가 아니라 범위까지 잠그는 이유
 description: MySQL InnoDB의 Next-Key Lock을 입문자 기준으로 쉽게 설명하고, 왜 범위까지 잠그는지와 실무에서 어디서 문제가 되는지 예제와 도식으로 정리한 글
 socialDescription: Next-Key Lock, record lock, gap lock의 관계와 SELECT FOR UPDATE에서 왜 예상보다 넓게 막히는지 쉽게 설명한 글
 date: 2026-03-10T18:21:12+09:00

@@ -1,5 +1,5 @@
 ---
-title: MySQL, Aurora MySQL, PostgreSQL은 무엇이 다를까 - 탄생 배경부터 구조와 선택 기준까지
+title: 05. MySQL, Aurora MySQL, PostgreSQL은 무엇이 다를까 - 탄생 배경부터 구조와 선택 기준까지
 description: MySQL InnoDB, Aurora MySQL-compatible, PostgreSQL의 탄생 배경과 스토리지 구조, MVCC, 락, 인덱스, 운영 방식 차이를 공식 문서 기준으로 깊이 있게 비교한 글
 socialDescription: MySQL, Aurora MySQL-compatible, PostgreSQL의 설계 철학과 구조 차이, 그리고 실무에서 어떤 선택 기준이 생기는지 깊이 있게 비교한 글
 date: 2026-03-10T18:37:37+09:00

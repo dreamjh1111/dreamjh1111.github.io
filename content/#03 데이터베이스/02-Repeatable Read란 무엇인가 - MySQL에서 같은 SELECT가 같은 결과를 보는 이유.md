@@ -1,5 +1,5 @@
 ---
-title: 02.Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유
+title: 02. Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유
 description: MySQL InnoDB의 Repeatable Read를 입문자 기준으로 쉽게 설명하고, 실무에서 왜 헷갈리는지 예제와 머메이드 도식으로 정리한 글
 socialDescription: Repeatable Read의 핵심 개념, consistent read, SELECT와 FOR UPDATE의 차이, 실무에서 생기는 문제를 쉽게 정리한 글
 date: 2026-03-10T18:11:39+09:00
