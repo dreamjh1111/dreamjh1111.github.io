@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Blog Writing"
+  short_description: "Research-driven blog writing rules for this Quartz project."
+  default_prompt: "Use $writing-project-blog-posts to research and draft a publish-ready post for this project."

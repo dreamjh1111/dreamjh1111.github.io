@@ -1,8 +1,8 @@
 ---
-title: Windows Terminal을 iTerm처럼 쓰고 싶어서 - macOS 개발 습관을 Windows에 이식한 키 매핑 기록
+title: 01. Windows Terminal을 iTerm처럼 쓰고 싶어서 - macOS 개발 습관을 Windows에 이식한 키 매핑 기록
 description: macOS와 Windows를 함께 쓰는 개발자의 관점에서, iTerm에서 익숙했던 작업 흐름을 Windows Terminal 키 매핑으로 옮긴 구현 후기와 settings.json 기록
 socialDescription: 맥과 윈도를 함께 쓰며 생기는 작업 흐름 차이를 줄이기 위해 Windows Terminal에 iTerm 스타일 키 매핑을 적용한 후기와 실제 설정 정리
-date: "2026-03-10T21:20:00+09:00"
+date: 2026-03-10T21:20:00+09:00
 draft: false
 tags:
   - windows
