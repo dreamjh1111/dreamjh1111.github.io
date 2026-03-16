@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Dirty Read, Non-Repeatable Read, Phantom Read overview</title>
+  <desc id="desc">세 가지 읽기 이상 현상을 정의와 핵심 차이로 비교한 간단한 인포그래픽</desc>
+  <style>
+    .bg { fill: #ffffff; }
+    .title { font: 700 28px 'Pretendard', 'Noto Sans KR', sans-serif; fill: #111827; }
+    .sub { font: 500 15px 'Pretendard', 'Noto Sans KR', sans-serif; fill: #4b5563; }
+    .card { fill: #f9fafb; stroke: #d1d5db; stroke-width: 2; rx: 18; ry: 18; }
+    .h { font: 700 24px 'Pretendard', 'Noto Sans KR', sans-serif; }
+    .body { font: 500 16px 'Pretendard', 'Noto Sans KR', sans-serif; fill: #1f2937; }
+    .mini { font: 600 14px 'Pretendard', 'Noto Sans KR', sans-serif; fill: #374151; }
+    .chip { rx: 999; ry: 999; }
+  </style>
+  <rect class="bg" width="1200" height="520"/>
+  <text x="60" y="60" class="title">Dirty Read, Non-Repeatable Read, Phantom Read 차이</text>
+  <text x="60" y="92" class="sub">차이는 '무엇을 다시 읽었을 때 달라졌는가'로 보면 가장 쉽게 구분됩니다.</text>
+
+  <rect x="50" y="130" width="340" height="320" class="card"/>
+  <text x="80" y="175" class="h" fill="#b91c1c">1. Dirty Read</text>
+  <rect x="80" y="195" width="128" height="30" fill="#fee2e2" class="chip"/>
+  <text x="98" y="215" class="mini">커밋 전 데이터</text>
+  <text x="80" y="260" class="body">• 다른 트랜잭션이 아직 커밋하지 않은 값을 읽음</text>
+  <text x="80" y="292" class="body">• 나중에 롤백되면 읽은 값 자체가 무효가 됨</text>
+  <text x="80" y="324" class="body">• 핵심 질문: '아직 확정 안 된 값을 읽었나?'</text>
+  <text x="80" y="372" class="mini">주로 READ UNCOMMITTED에서 문제</text>
+
+  <rect x="430" y="130" width="340" height="320" class="card"/>
+  <text x="460" y="175" class="h" fill="#1d4ed8">2. Non-Repeatable Read</text>
+  <rect x="460" y="195" width="150" height="30" fill="#dbeafe" class="chip"/>
+  <text x="478" y="215" class="mini">같은 행, 다른 값</text>
+  <text x="460" y="260" class="body">• 같은 행을 두 번 읽었더니 값이 달라짐</text>
+  <text x="460" y="292" class="body">• 중간에 다른 트랜잭션이 UPDATE/DELETE 후 커밋</text>
+  <text x="460" y="324" class="body">• 핵심 질문: '같은 행 값이 바뀌었나?'</text>
+  <text x="460" y="372" class="mini">보통 READ COMMITTED에서 가능</text>
+
+  <rect x="810" y="130" width="340" height="320" class="card"/>
+  <text x="840" y="175" class="h" fill="#047857">3. Phantom Read</text>
+  <rect x="840" y="195" width="170" height="30" fill="#d1fae5" class="chip"/>
+  <text x="858" y="215" class="mini">같은 조건, 다른 행 집합</text>
+  <text x="840" y="260" class="body">• 같은 조건으로 다시 조회했더니 행 수가 달라짐</text>
+  <text x="840" y="292" class="body">• 중간에 INSERT/DELETE 또는 범위 이동 UPDATE 발생</text>
+  <text x="840" y="324" class="body">• 핵심 질문: '조건에 맞는 행 집합이 달라졌나?'</text>
+  <text x="840" y="372" class="mini">DB 구현에 따라 방지 방식이 다름</text>
+
+  <text x="60" y="490" class="sub">정리: Dirty Read는 '미확정 값', Non-Repeatable Read는 '같은 행 값 변화', Phantom Read는 '같은 조건 결과 집합 변화'입니다.</text>
+</svg>
