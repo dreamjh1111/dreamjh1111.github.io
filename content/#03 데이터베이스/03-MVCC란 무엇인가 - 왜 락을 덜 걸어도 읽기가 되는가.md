@@ -1,5 +1,5 @@
 ---
-title: 08. MVCC란 무엇인가 - 왜 락을 덜 걸어도 읽기가 되는가
+title: 03. MVCC란 무엇인가 - 왜 락을 덜 걸어도 읽기가 되는가
 description: MySQL InnoDB와 PostgreSQL의 MVCC를 기준으로 undo, consistent read, 격리 수준 차이, 락과의 관계를 입문자 관점에서 정리한 글
 socialDescription: MVCC가 왜 필요한지부터 버전 관리, Consistent Read, Read Committed와 Repeatable Read의 체감 차이, MySQL과 PostgreSQL 구현 차이까지 한 번에 정리했습니다.
 date: 2026-03-16T11:55:00+09:00
@@ -15,9 +15,9 @@ tags:
   - ko-kr
 ---
 
-앞선 글들에서 [[01-왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]], [[02-Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]], [[07-Dirty Read, Non-Repeatable Read, Phantom Read 차이 - 트랜잭션 격리 수준을 읽기 이상 현상으로 이해하기]]를 차례로 정리했다.
+앞선 글에서 [[01-왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]와 [[02-MySQL, Aurora MySQL, PostgreSQL은 무엇이 다를까 - 탄생 배경부터 구조와 선택 기준까지]]를 먼저 정리했다.
 
-그다음 자연스럽게 남는 질문이 있다.
+이제 그 흐름에서 가장 먼저 잡아야 할 핵심 개념이 있다.
 
 `도대체 MVCC가 뭔데, 락을 덜 걸어도 읽기가 되는 걸까?`
 
@@ -73,8 +73,8 @@ DB가 어려워지는 순간은 대부분 `동시에 여러 요청이 같은 데
 
 ```mermaid
 flowchart LR
-    A[트랜잭션 A<br/>SELECT] --> B{읽는 순간}
-    C[트랜잭션 B<br/>UPDATE] --> D[새 버전 생성]
+    A[트랜잭션 A SELECT] --> B{읽는 순간}
+    C[트랜잭션 B UPDATE] --> D[새 버전 생성]
     B -->|락만 의존| E[쓰기 끝날 때까지 대기]
     B -->|MVCC 사용| F[이전 버전 또는 스냅샷 읽기]
     D --> F
@@ -243,7 +243,7 @@ sequenceDiagram
 2. `FOR UPDATE`를 하는 순간 현재 레코드와 락 기준으로 본다
 3. 그래서 방금 본 값과 다른 세계가 나타난다
 
-이 부분이 [[02-Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]]에서 특히 많이 헷갈리는 지점이다.
+이 부분이 [[04-Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]]에서 특히 많이 헷갈리는 지점이다.
 
 ## 6. MySQL과 PostgreSQL의 차이는 어디서 체감될까
 

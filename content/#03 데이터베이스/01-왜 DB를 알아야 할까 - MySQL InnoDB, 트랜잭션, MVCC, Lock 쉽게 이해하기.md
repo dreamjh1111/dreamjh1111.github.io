@@ -192,8 +192,8 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-    A[트랜잭션 A<br/>row 1 락 보유] --> B[row 2 락 대기]
-    C[트랜잭션 B<br/>row 2 락 보유] --> D[row 1 락 대기]
+    A[트랜잭션 A row 1 락 보유] --> B[row 2 락 대기]
+    C[트랜잭션 B row 2 락 보유] --> D[row 1 락 대기]
     B --> E[서로 대기]
     D --> E
     E --> F[InnoDB가 한 트랜잭션을 롤백]
