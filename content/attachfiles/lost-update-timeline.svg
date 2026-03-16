@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Lost Update timeline</title>
+  <desc id="desc">Two transactions read the same value and update it. The later write overwrites the earlier one, causing a lost update.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .line { stroke: #94a3b8; stroke-width: 3; }
+      .db { fill: #0f172a; }
+      .tx1 { fill: #2563eb; }
+      .tx2 { fill: #dc2626; }
+      .box1 { fill: #dbeafe; stroke: #2563eb; stroke-width: 2; rx: 14; }
+      .box2 { fill: #fee2e2; stroke: #dc2626; stroke-width: 2; rx: 14; }
+      .box3 { fill: #ecfeff; stroke: #0891b2; stroke-width: 2; rx: 14; }
+      .title { font: 700 30px 'Noto Sans KR', sans-serif; fill: #0f172a; }
+      .label { font: 700 22px 'Noto Sans KR', sans-serif; fill: #0f172a; }
+      .text { font: 18px 'Noto Sans KR', sans-serif; fill: #334155; }
+      .mono { font: 17px 'IBM Plex Mono', monospace; fill: #0f172a; }
+      .warn { font: 700 20px 'Noto Sans KR', sans-serif; fill: #b91c1c; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="700"/>
+  <text class="title" x="60" y="60">Lost Update가 발생하는 전형적인 흐름</text>
+  <text class="text" x="60" y="95">두 트랜잭션이 같은 값을 읽고 각자 계산한 뒤 저장하면, 나중에 커밋한 쓰기가 먼저 반영된 변경을 덮어쓸 수 있다.</text>
+
+  <text class="label tx1" x="120" y="160">트랜잭션 A</text>
+  <text class="label tx2" x="480" y="160">트랜잭션 B</text>
+  <text class="label db" x="880" y="160">DB 상태</text>
+
+  <line class="line" x1="180" y1="190" x2="180" y2="620"/>
+  <line class="line" x1="540" y1="190" x2="540" y2="620"/>
+  <line class="line" x1="930" y1="190" x2="930" y2="620"/>
+
+  <rect class="box3" x="820" y="210" width="220" height="72"/>
+  <text class="mono" x="850" y="255">balance = 100</text>
+
+  <rect class="box1" x="70" y="240" width="220" height="86"/>
+  <text class="text" x="95" y="278">1) A가 현재 값을 읽음</text>
+  <text class="mono" x="95" y="306">SELECT balance = 100</text>
+
+  <rect class="box2" x="430" y="300" width="220" height="86"/>
+  <text class="text" x="455" y="338">2) B도 같은 값을 읽음</text>
+  <text class="mono" x="455" y="366">SELECT balance = 100</text>
+
+  <rect class="box1" x="70" y="380" width="220" height="110"/>
+  <text class="text" x="95" y="418">3) A가 +20 계산 후 저장</text>
+  <text class="mono" x="95" y="448">UPDATE balance = 120</text>
+  <text class="text" x="95" y="475">A 커밋 완료</text>
+
+  <rect class="box3" x="820" y="410" width="220" height="72"/>
+  <text class="mono" x="850" y="455">balance = 120</text>
+
+  <rect class="box2" x="430" y="500" width="220" height="110"/>
+  <text class="text" x="455" y="538">4) B가 예전 값 100 기준으로</text>
+  <text class="mono" x="455" y="566">UPDATE balance = 90</text>
+  <text class="text" x="455" y="593">B 커밋 완료</text>
+
+  <rect class="box3" x="820" y="538" width="220" height="72"/>
+  <text class="mono" x="850" y="583">balance = 90</text>
+
+  <text class="warn" x="60" y="660">결과: A의 +20 변경이 사라졌다. 이것이 Lost Update다.</text>
+</svg>
