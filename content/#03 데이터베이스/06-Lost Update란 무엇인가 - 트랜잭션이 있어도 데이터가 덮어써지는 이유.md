@@ -2,7 +2,7 @@
 title: 06. Lost Update란 무엇인가 - 트랜잭션이 있어도 데이터가 덮어써지는 이유
 description: Lost Update가 무엇인지, 왜 트랜잭션이 있어도 발생할 수 있는지, MySQL·Aurora MySQL·PostgreSQL 관점에서 어떻게 막는지 정리한 글
 socialDescription: 동시에 같은 데이터를 읽고 수정할 때 왜 앞선 변경이 사라지는지, Lost Update의 원리와 방지 방법을 예제·Mermaid·비교표로 함께 정리했다.
-date: 2026-03-16T10:58:00+09:00
+date: 2026-03-16T11:08:00+09:00
 draft: false
 tags:
   - database

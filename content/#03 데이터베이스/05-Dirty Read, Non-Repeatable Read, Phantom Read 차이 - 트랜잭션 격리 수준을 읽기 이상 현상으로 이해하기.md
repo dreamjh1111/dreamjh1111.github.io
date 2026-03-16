@@ -2,7 +2,7 @@
 title: 05. Dirty Read, Non-Repeatable Read, Phantom Read 차이 - 트랜잭션 격리 수준을 읽기 이상 현상으로 이해하기
 description: Dirty Read, Non-Repeatable Read, Phantom Read의 차이를 예시와 도식으로 정리하고 MySQL·PostgreSQL 기준으로 어디서 헷갈리는지 설명한 글
 socialDescription: 트랜잭션 격리 수준에서 자주 나오는 Dirty Read, Non-Repeatable Read, Phantom Read를 행 단위 변화와 결과 집합 변화 관점으로 쉽게 구분했다.
-date: 2026-03-16T11:08:00+09:00
+date: 2026-03-16T10:58:00+09:00
 draft: false
 tags:
   - database
