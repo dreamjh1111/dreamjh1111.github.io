@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Isolation Level comparison overview</title>
+  <desc id="desc">Read Uncommitted, Read Committed, Repeatable Read, Serializable levels compared against Dirty Read, Non-Repeatable Read, Phantom Read.</desc>
+  <style>
+    .bg { fill: #0f172a; }
+    .card { fill: #111827; stroke: #334155; stroke-width: 2; rx: 18; }
+    .title { fill: #e2e8f0; font: 700 34px 'Pretendard', 'Noto Sans KR', sans-serif; }
+    .subtitle { fill: #94a3b8; font: 500 18px 'Pretendard', 'Noto Sans KR', sans-serif; }
+    .colhead { fill: #f8fafc; font: 700 24px 'Pretendard', 'Noto Sans KR', sans-serif; }
+    .level { fill: #cbd5e1; font: 700 24px 'Pretendard', 'Noto Sans KR', sans-serif; }
+    .label { fill: #94a3b8; font: 600 18px 'Pretendard', 'Noto Sans KR', sans-serif; }
+    .ok { fill: #22c55e; }
+    .warn { fill: #f59e0b; }
+    .bad { fill: #ef4444; }
+    .txt { fill: #e5e7eb; font: 600 18px 'Pretendard', 'Noto Sans KR', sans-serif; }
+    .foot { fill: #94a3b8; font: 500 16px 'Pretendard', 'Noto Sans KR', sans-serif; }
+    .grid { stroke: #334155; stroke-width: 1.2; }
+  </style>
+  <rect class="bg" width="1200" height="720" rx="24"/>
+  <text x="70" y="80" class="title">Isolation Level 한눈에 비교</text>
+  <text x="70" y="115" class="subtitle">읽기 이상 현상과 동시성 비용을 함께 보면 격리 수준 선택이 쉬워집니다.</text>
+
+  <rect x="60" y="150" width="1080" height="470" class="card" rx="22"/>
+
+  <line x1="310" y1="200" x2="310" y2="590" class="grid"/>
+  <line x1="510" y1="200" x2="510" y2="590" class="grid"/>
+  <line x1="710" y1="200" x2="710" y2="590" class="grid"/>
+  <line x1="910" y1="200" x2="910" y2="590" class="grid"/>
+  <line x1="60" y1="260" x2="1140" y2="260" class="grid"/>
+  <line x1="60" y1="340" x2="1140" y2="340" class="grid"/>
+  <line x1="60" y1="420" x2="1140" y2="420" class="grid"/>
+  <line x1="60" y1="500" x2="1140" y2="500" class="grid"/>
+
+  <text x="95" y="230" class="colhead">구분</text>
+  <text x="360" y="230" class="colhead">Dirty Read</text>
+  <text x="545" y="230" class="colhead">Non-Repeatable</text>
+  <text x="760" y="230" class="colhead">Phantom</text>
+  <text x="965" y="230" class="colhead">체감 특성</text>
+
+  <text x="95" y="310" class="level">Read Uncommitted</text>
+  <circle cx="410" cy="302" r="13" class="bad"/>
+  <text x="435" y="310" class="txt">허용</text>
+  <circle cx="610" cy="302" r="13" class="bad"/>
+  <text x="635" y="310" class="txt">허용</text>
+  <circle cx="810" cy="302" r="13" class="bad"/>
+  <text x="835" y="310" class="txt">허용</text>
+  <text x="965" y="310" class="txt">거의 쓰지 않음</text>
+
+  <text x="95" y="390" class="level">Read Committed</text>
+  <circle cx="410" cy="382" r="13" class="ok"/>
+  <text x="435" y="390" class="txt">방지</text>
+  <circle cx="610" cy="382" r="13" class="warn"/>
+  <text x="635" y="390" class="txt">가능</text>
+  <circle cx="810" cy="382" r="13" class="warn"/>
+  <text x="835" y="390" class="txt">가능</text>
+  <text x="965" y="390" class="txt">기본값인 DB가 많음</text>
+
+  <text x="95" y="470" class="level">Repeatable Read</text>
+  <circle cx="410" cy="462" r="13" class="ok"/>
+  <text x="435" y="470" class="txt">방지</text>
+  <circle cx="610" cy="462" r="13" class="ok"/>
+  <text x="635" y="470" class="txt">방지</text>
+  <circle cx="810" cy="462" r="13" class="warn"/>
+  <text x="835" y="470" class="txt">표준상 가능*</text>
+  <text x="965" y="470" class="txt">MySQL 기본값</text>
+
+  <text x="95" y="550" class="level">Serializable</text>
+  <circle cx="410" cy="542" r="13" class="ok"/>
+  <text x="435" y="550" class="txt">방지</text>
+  <circle cx="610" cy="542" r="13" class="ok"/>
+  <text x="635" y="550" class="txt">방지</text>
+  <circle cx="810" cy="542" r="13" class="ok"/>
+  <text x="835" y="550" class="txt">방지</text>
+  <text x="965" y="550" class="txt">비용 가장 큼</text>
+
+  <text x="80" y="665" class="foot">* 실제 동작은 DB 구현 차이를 꼭 봐야 합니다. PostgreSQL Repeatable Read는 phantom read를 허용하지 않고, MySQL InnoDB는 MVCC와 gap/next-key lock 영향까지 함께 봐야 합니다.</text>
+</svg>
