@@ -208,7 +208,7 @@ hr {
   .explorer-content {
     margin-top: 0.35rem;
     padding: 0;
-    background: transparent;
+    background: transparent !important;
     border: 0;
     box-shadow: none;
 
@@ -227,6 +227,12 @@ hr {
   }
 
   :root[saved-theme="dark"] & {
+    .explorer-content {
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+    }
+
     .explorer-content ul li > a {
       color: #c7d0da;
 

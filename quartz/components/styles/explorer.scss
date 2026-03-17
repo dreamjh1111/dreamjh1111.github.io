@@ -122,6 +122,9 @@ button.desktop-explorer {
   overflow: hidden;
   overflow-y: auto;
   margin-top: 0.5rem;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 
   & ul {
     list-style: none;
