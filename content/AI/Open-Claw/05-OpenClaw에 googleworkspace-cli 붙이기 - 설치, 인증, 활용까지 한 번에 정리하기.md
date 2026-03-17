@@ -1,8 +1,9 @@
 ---
-title: 05. OpenClaw에 googleworkspace/cli 붙이기 - 설치, 인증, 활용까지 한 번에 정리하기
+title: OpenClaw에 googleworkspace/cli 붙이기 - 설치, 인증, 활용까지 한 번에 정리하기
 description: OpenClaw에 googleworkspace/cli를 붙여 Gmail, Calendar, Drive를 다루는 방법을 정리했다. 설치와 인증은 짧게, 대신 실전 활용 시나리오와 업무 자동화 예시를 중심으로 담았다.
 socialDescription: OpenClaw에 googleworkspace/cli를 연결해 Gmail, Calendar, Drive를 실제로 어떻게 써먹는지 한 글로 정리했다. 설치와 인증, OpenClaw 연결, 활용 예시, 자동화 흐름까지 함께 담았다.
 date: 2026-03-12T23:40:00+09:00
+navOrder: 5
 draft: false
 tags:
   - ai

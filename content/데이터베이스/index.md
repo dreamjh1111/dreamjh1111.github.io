@@ -12,12 +12,22 @@ tags:
   - ko-kr
 ---
 
-데이터베이스 핵심 개념을 **실무 감각으로 이해하는 시리즈**입니다.
+트랜잭션과 동시성 제어를 **실무 감각으로 이해하는 데이터베이스 시리즈**입니다.
 
-- 트랜잭션
-- MVCC
+## 이 시리즈에서 다루는 것
+- MySQL InnoDB 기본기
+- MVCC와 Consistent Read
 - Isolation Level
-- Lost Update
-- Gap Lock / Next-Key Lock
+- Lost Update, Gap Lock, Next-Key Lock
+- MySQL / PostgreSQL 차이
 
-위 주제를 MySQL, PostgreSQL 관점까지 연결해 정리합니다.
+## 추천 읽기 순서
+1. 왜 DB를 알아야 할까
+2. MySQL, Aurora MySQL, PostgreSQL은 무엇이 다를까
+3. MVCC란 무엇인가
+4. Repeatable Read란 무엇인가
+5. Dirty Read, Non-Repeatable Read, Phantom Read 차이
+6. Lost Update란 무엇인가
+7. Gap Lock이란 무엇인가
+8. Next-Key Lock이란 무엇인가
+9. Isolation Level이란 무엇인가

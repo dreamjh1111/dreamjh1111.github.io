@@ -1,8 +1,9 @@
 ---
-title: 00. OpenClaw란 무엇인가 - 왜 주목받고, 무엇이 다른가
+title: OpenClaw란 무엇인가 - 왜 주목받고, 무엇이 다른가
 description: OpenClaw가 왜 갑자기 많이 언급되는지, 기존 ChatGPT류 챗봇과 무엇이 다르고 어떤 구조로 돌아가는지 설치 전에 짧게 정리한 입문 글
 socialDescription: OpenClaw는 단순히 대화만 하는 AI가 아니라, 메시징 앱과 로컬 환경을 연결해 실제 작업을 수행하는 개인 AI 에이전트에 가깝습니다. 설치 전에 핵심만 먼저 정리했습니다.
 date: 2026-03-12T23:20:00+09:00
+navOrder: 0
 draft: false
 tags:
   - ai

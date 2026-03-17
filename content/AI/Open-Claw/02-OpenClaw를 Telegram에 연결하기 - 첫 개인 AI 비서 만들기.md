@@ -1,8 +1,9 @@
 ---
-title: 02. OpenClaw를 Telegram에 연결하기 - 첫 개인 AI 비서 만들기
+title: OpenClaw를 Telegram에 연결하기 - 첫 개인 AI 비서 만들기
 description: Ubuntu에 OpenClaw를 설치한 뒤 Telegram BotFather로 봇을 만들고, Pairing 승인과 첫 DM 테스트까지 가는 흐름을 사진 중심으로 정리한 실전 가이드
 socialDescription: 설치가 끝났다면 이제 OpenClaw를 Telegram에 붙여서 진짜 개인 AI 비서처럼 써볼 차례입니다. BotFather, pairing, privacy mode, restart 포인트까지 한 번에 정리했습니다.
 date: 2026-03-12T23:55:00+09:00
+navOrder: 2
 draft: false
 tags:
   - ai

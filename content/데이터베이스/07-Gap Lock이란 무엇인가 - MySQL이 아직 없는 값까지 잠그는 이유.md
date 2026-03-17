@@ -1,8 +1,9 @@
 ---
-title: 07. Gap Lock이란 무엇인가 - MySQL이 아직 없는 값까지 잠그는 이유
+title: Gap Lock이란 무엇인가 - MySQL이 아직 없는 값까지 잠그는 이유
 description: MySQL InnoDB의 Gap Lock을 입문자 기준으로 쉽게 설명하고, 왜 아직 없는 값까지 막히는지와 실무에서 어디서 문제가 되는지 예제와 도식으로 정리한 글
 socialDescription: Gap Lock이 무엇인지, 왜 INSERT가 막히는지, Next-Key Lock과 어떤 관계인지 쉽게 설명한 글
 date: 2026-03-16T11:18:00+09:00
+navOrder: 7
 draft: false
 tags:
   - database

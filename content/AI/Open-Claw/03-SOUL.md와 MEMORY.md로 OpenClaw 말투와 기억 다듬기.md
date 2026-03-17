@@ -1,8 +1,9 @@
 ---
-title: 03. SOUL.md와 MEMORY.md로 OpenClaw 말투와 기억 다듬기
+title: SOUL.md와 MEMORY.md로 OpenClaw 말투와 기억 다듬기
 description: OpenClaw의 SOUL.md와 MEMORY.md가 각각 어떤 역할을 맡는지, 그리고 실제로 어떻게 손대면 말투와 기억이 달라지는지 실전 예시와 함께 정리한 가이드
 socialDescription: OpenClaw를 Telegram까지 붙였다면, 이제는 말투와 기억을 직접 다듬을 차례입니다. SOUL.md와 MEMORY.md의 역할 차이부터 실제 수정 예시까지 한 번에 정리했습니다.
 date: 2026-03-13T00:25:00+09:00
+navOrder: 3
 draft: false
 tags:
   - ai

@@ -1,8 +1,9 @@
 ---
-title: 09. Isolation Level이란 무엇인가 - Read Uncommitted, Read Committed, Repeatable Read, Serializable 차이 한 번에 정리하기
+title: Isolation Level이란 무엇인가 - Read Uncommitted, Read Committed, Repeatable Read, Serializable 차이 한 번에 정리하기
 description: 트랜잭션 격리 수준 4단계를 Dirty Read, Non-Repeatable Read, Phantom Read와 연결하고 MySQL·PostgreSQL 구현 차이까지 한 번에 정리한 글
 socialDescription: Isolation Level이 왜 필요한지부터 Read Uncommitted, Read Committed, Repeatable Read, Serializable의 차이, MVCC·락·읽기 이상 현상·MySQL·PostgreSQL 구현 차이까지 실무 관점으로 정리했습니다.
 date: 2026-03-17T12:25:00+09:00
+navOrder: 9
 draft: false
 tags:
   - database

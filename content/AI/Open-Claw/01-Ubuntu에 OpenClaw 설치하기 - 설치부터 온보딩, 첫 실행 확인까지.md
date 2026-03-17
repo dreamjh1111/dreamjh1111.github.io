@@ -1,8 +1,9 @@
 ---
-title: 01. Ubuntu에 OpenClaw 설치하기 - 설치부터 온보딩, 첫 실행 확인까지
+title: Ubuntu에 OpenClaw 설치하기 - 설치부터 온보딩, 첫 실행 확인까지
 description: Ubuntu에서 OpenClaw를 공식 설치 스크립트로 설치하고, 온보딩 마법사와 Gateway 상태 확인, Dashboard 접속까지 한 번에 정리한 실전 설치 기록
 socialDescription: Ubuntu 서버나 PC에 OpenClaw를 설치하려면 무엇을 먼저 준비하고, 어떤 명령어로 설치하고, 어디서 막히는지까지 실전 흐름으로 정리했습니다.
 date: 2026-03-12T22:30:00+09:00
+navOrder: 1
 draft: false
 tags:
   - ai

@@ -1,8 +1,9 @@
 ---
-title: 04. SOUL.md와 MEMORY.md 베스트 프랙티스 3가지 - 개발, 리서치, 개인 비서형
+title: SOUL.md와 MEMORY.md 베스트 프랙티스 3가지 - 개발, 리서치, 개인 비서형
 description: GitHub에서 star를 많이 받은 OpenClaw 자료를 바탕으로 SOUL.md와 MEMORY.md를 개발 보조형, 콘텐츠/리서치형, 개인 비서/운영형으로 나눠 어떻게 쓰는지 정리한 실전 가이드
 socialDescription: SOUL.md와 MEMORY.md를 어떻게 써야 하는지 막막하다면, GitHub에서 많이 회자된 OpenClaw 사례 3가지를 기준으로 시작하는 편이 좋습니다. 개발, 리서치, 개인 비서형 패턴을 한 번에 정리했습니다.
 date: 2026-03-13T01:05:00+09:00
+navOrder: 4
 draft: false
 tags:
   - ai

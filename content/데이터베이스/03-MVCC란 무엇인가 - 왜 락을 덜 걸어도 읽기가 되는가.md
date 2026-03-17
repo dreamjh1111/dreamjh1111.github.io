@@ -1,8 +1,9 @@
 ---
-title: 03. MVCC란 무엇인가 - 왜 락을 덜 걸어도 읽기가 되는가
+title: MVCC란 무엇인가 - 왜 락을 덜 걸어도 읽기가 되는가
 description: MySQL InnoDB와 PostgreSQL의 MVCC를 기준으로 undo, consistent read, 격리 수준 차이, 락과의 관계를 입문자 관점에서 정리한 글
 socialDescription: MVCC가 왜 필요한지부터 버전 관리, Consistent Read, Read Committed와 Repeatable Read의 체감 차이, MySQL과 PostgreSQL 구현 차이까지 한 번에 정리했습니다.
 date: 2026-03-10T18:06:00+09:00
+navOrder: 3
 draft: false
 tags:
   - database
