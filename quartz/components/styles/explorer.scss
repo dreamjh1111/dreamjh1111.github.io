@@ -132,18 +132,18 @@ button.desktop-explorer {
       overscroll-behavior: contain;
       display: flex;
       flex-direction: column;
-      gap: 0.26rem;
+      gap: 0.06rem;
     }
 
     & li > a {
       color: var(--dark);
-      opacity: 0.82;
+      opacity: 0.88;
       pointer-events: all;
       display: block;
-      font-size: 0.95rem;
-      line-height: 1.45;
-      padding: 0.4rem 0.55rem;
-      border-radius: 0.6rem;
+      font-size: 0.86rem;
+      line-height: 1.35;
+      padding: 0.24rem 0.55rem;
+      border-radius: 0.35rem;
       transition:
         background-color 0.18s ease,
         color 0.18s ease,
@@ -156,22 +156,9 @@ button.desktop-explorer {
 
       &.active {
         opacity: 1;
-        color: var(--tertiary);
-        background: color-mix(in srgb, var(--secondary) 8%, transparent);
-        font-weight: $semiBoldWeight;
-        position: relative;
-        padding-left: 0.75rem;
-
-        &::before {
-          content: "";
-          position: absolute;
-          left: 0;
-          top: 0.28rem;
-          width: 3px;
-          height: calc(100% - 0.56rem);
-          border-radius: 999px;
-          background: var(--secondary);
-        }
+        color: #0d6efd;
+        background: rgba(13, 110, 253, 0.08);
+        font-weight: 600;
       }
     }
   }
@@ -218,28 +205,27 @@ button.desktop-explorer {
   display: flex;
   align-items: center;
   user-select: none;
-  padding: 0.45rem 0.6rem;
-  margin-top: 0.3rem;
-  border: 1px solid color-mix(in srgb, var(--lightgray) 85%, transparent);
-  border-radius: 14px;
-  background: color-mix(in srgb, var(--lightgray) 35%, transparent);
+  padding: 0.1rem 0;
+  margin-top: 0.18rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
   transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
+    background-color 0.15s ease,
+    color 0.15s ease;
 
   & div > a,
   & div > .folder-link {
-    color: var(--secondary);
-    font-family: var(--headerFont);
-    font-size: 1rem;
-    font-weight: $semiBoldWeight;
-    line-height: 1.5rem;
+    color: #212529;
+    font-family: var(--bodyFont);
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.28rem;
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    padding: 0.18rem 0.2rem;
-    border-radius: 0.45rem;
+    gap: 0.35rem;
+    padding: 0.14rem 0.2rem;
+    border-radius: 0.3rem;
   }
 
   & div > a:hover,
@@ -248,56 +234,55 @@ button.desktop-explorer {
   }
 
   &:hover {
-    background: color-mix(in srgb, var(--lightgray) 60%, transparent);
-    border-color: color-mix(in srgb, var(--secondary) 25%, var(--lightgray));
+    background: transparent;
 
     .folder-count {
-      color: var(--secondary);
-      border-color: color-mix(in srgb, var(--secondary) 18%, var(--lightgray));
+      color: #495057;
+      border-color: #ced4da;
     }
   }
 
   & div > button {
-    color: var(--dark);
+    color: #212529;
     background-color: transparent;
     border: none;
     text-align: left;
     cursor: pointer;
-    padding: 0.18rem 0.2rem;
+    padding: 0.14rem 0.2rem;
     display: flex;
     align-items: center;
-    font-family: var(--headerFont);
-    border-radius: 0.45rem;
+    font-family: var(--bodyFont);
+    border-radius: 0.3rem;
 
     &:hover {
-      background: color-mix(in srgb, var(--lightgray) 65%, transparent);
+      background: #e9ecef;
     }
 
     & span {
-      font-size: 1rem;
+      font-size: 0.82rem;
       display: inline-block;
-      color: var(--secondary);
-      font-weight: $semiBoldWeight;
+      color: #212529;
+      font-weight: 600;
       margin: 0;
-      line-height: 1.5rem;
+      line-height: 1.28rem;
       pointer-events: none;
     }
   }
 
   .folder-count {
     margin-left: auto;
-    min-width: 1.35rem;
-    height: 1.35rem;
-    padding: 0 0.38rem;
+    min-width: 1.02rem;
+    height: 1.02rem;
+    padding: 0 0.22rem;
     border-radius: 999px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.74rem;
-    font-weight: 700;
-    color: var(--gray);
-    background: color-mix(in srgb, var(--light) 78%, var(--lightgray));
-    border: 1px solid color-mix(in srgb, var(--lightgray) 88%, transparent);
+    font-size: 0.66rem;
+    font-weight: 600;
+    color: #6c757d;
+    background: #f1f3f5;
+    border: 1px solid #dee2e6;
   }
 }
 
