@@ -233,6 +233,12 @@ sequenceDiagram
 다음 글에서는 이 흐름과 자연스럽게 이어지는 `Next-Key Lock`을 따로 정리해 보려고 한다.  
 왜 DB가 "행 하나"만이 아니라 "범위"까지 잠그는지 이해하면, 그다음 `Gap Lock`도 훨씬 쉽게 들어온다.
 
+## 함께 읽기
+- 시리즈 전체 보기: [[index]]
+- 이전 글: [[03-MVCC란 무엇인가 - 왜 락을 덜 걸어도 읽기가 되는가]]
+- 다음 글: [[05-Dirty Read, Non-Repeatable Read, Phantom Read 차이 - 트랜잭션 격리 수준을 읽기 이상 현상으로 이해하기]]
+- 입문글 다시 보기: [[01-왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
+
 ## 참고 자료
 
 - [MySQL 8.4 Reference Manual - Transaction Isolation Levels](https://dev.mysql.com/doc/refman/8.4/en/innodb-transaction-isolation-levels.html)

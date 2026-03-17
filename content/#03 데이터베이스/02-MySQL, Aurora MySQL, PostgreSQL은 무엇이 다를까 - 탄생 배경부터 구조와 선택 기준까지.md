@@ -423,6 +423,12 @@ flowchart TD
 
 다음 글에서는 이 흐름을 이어서 `Lost Update`처럼 실제 동시성 문제 하나를 중심으로, "DB를 바꿔도 여전히 중요한 문제"를 더 직접적으로 다뤄볼 수 있을 것 같다.
 
+## 함께 읽기
+- 시리즈 전체 보기: [[index]]
+- 이전 글: [[01-왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
+- 다음 글: [[03-MVCC란 무엇인가 - 왜 락을 덜 걸어도 읽기가 되는가]]
+- 입문글 다시 보기: [[01-왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
+
 ## 참고 자료
 
 - [MySQL 공식 소개 페이지](https://www.mysql.com/about/)

@@ -253,6 +253,11 @@ DB를 공부하는 이유도 결국 여기에 있다.
 
 이번 글은 입문용으로 최대한 쉽게 정리한 버전이고, 다음에는 `Repeatable Read`, `Next-Key Lock`, `Gap Lock`, `Lost Update` 같은 개념까지 예제로 더 깊게 정리해 봐도 재미있을 것 같다.
 
+## 함께 읽기
+- 시리즈 전체 보기: [[index]]
+- 다음 글: [[02-MySQL, Aurora MySQL, PostgreSQL은 무엇이 다를까 - 탄생 배경부터 구조와 선택 기준까지]]
+- 추천 시작 경로: [[02-MySQL, Aurora MySQL, PostgreSQL은 무엇이 다를까 - 탄생 배경부터 구조와 선택 기준까지]]
+
 ## 참고 자료
 
 - [MySQL 8.4 Reference Manual - The InnoDB Storage Engine](https://dev.mysql.com/doc/refman/8.4/en/innodb-storage-engine.html)

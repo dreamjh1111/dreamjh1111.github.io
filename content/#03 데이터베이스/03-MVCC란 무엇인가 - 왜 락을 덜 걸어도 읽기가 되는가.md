@@ -358,6 +358,12 @@ MVCC 기반 일반 조회는 `일관된 값`일 수는 있어도 `현재 최신�
 
 다음에 락 관련 현상을 볼 때도 `이건 MVCC가 담당하는 읽기 문제인지`, `아니면 락이 담당하는 쓰기 충돌 문제인지`를 먼저 나눠 보면 훨씬 덜 헷갈린다.
 
+## 함께 읽기
+- 시리즈 전체 보기: [[index]]
+- 이전 글: [[02-MySQL, Aurora MySQL, PostgreSQL은 무엇이 다를까 - 탄생 배경부터 구조와 선택 기준까지]]
+- 다음 글: [[04-Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]]
+- 입문글 다시 보기: [[01-왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
+
 ## 참고 자료
 
 - [MySQL 8.4 Reference Manual - Consistent Nonlocking Reads](https://dev.mysql.com/doc/refman/8.4/en/innodb-consistent-read.html)

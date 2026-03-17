@@ -306,6 +306,12 @@ PostgreSQL 문서는 격리 수준 표를 명확하게 제시하면서, `Repeata
 
 이 질문에 바로 답할 수 있으면, 트랜잭션 격리 수준의 가장 헷갈리는 구간은 이미 넘어온 셈이다.
 
+## 함께 읽기
+- 시리즈 전체 보기: [[index]]
+- 이전 글: [[04-Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]]
+- 다음 글: [[06-Lost Update란 무엇인가 - 트랜잭션이 있어도 데이터가 덮어써지는 이유]]
+- 입문글 다시 보기: [[01-왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
+
 ## 참고 자료
 
 - [MySQL 8.4 Reference Manual - Transaction Isolation Levels](https://dev.mysql.com/doc/refman/8.4/en/innodb-transaction-isolation-levels.html)

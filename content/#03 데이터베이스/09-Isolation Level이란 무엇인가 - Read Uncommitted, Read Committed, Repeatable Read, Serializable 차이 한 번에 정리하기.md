@@ -489,6 +489,11 @@ Isolation Level은 면접 단골 개념이기도 하지만, 실제로는 `왜 �
 
 이 흐름으로 보면 `Read Uncommitted`, `Read Committed`, `Repeatable Read`, `Serializable`도 각각 따로 떨어진 용어가 아니라, 같은 지도 위의 다른 좌표로 보이기 시작한다.
 
+## 함께 읽기
+- 시리즈 전체 보기: [[index]]
+- 이전 글: [[08-Next-Key Lock이란 무엇인가 - MySQL이 행 하나가 아니라 범위까지 잠그는 이유]]
+- 입문글 다시 보기: [[01-왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
+
 ## 참고 자료
 
 - [MySQL 8.4 Reference Manual - Transaction Isolation Levels](https://dev.mysql.com/doc/refman/8.4/en/innodb-transaction-isolation-levels.html)

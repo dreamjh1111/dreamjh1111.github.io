@@ -219,6 +219,12 @@ gap을 오래 잡고 있으면 그 구간으로 들어오려는 `INSERT`가 줄�
 다음 글에서는 이 흐름을 실무 문제로 더 직접 연결해서 `Lost Update`를 다뤄볼 생각이다.  
 거기서는 "왜 업데이트가 사라지는가"와 "어떻게 막을 것인가"를 더 구체적으로 보게 될 것이다.
 
+## 함께 읽기
+- 시리즈 전체 보기: [[index]]
+- 이전 글: [[06-Lost Update란 무엇인가 - 트랜잭션이 있어도 데이터가 덮어써지는 이유]]
+- 다음 글: [[08-Next-Key Lock이란 무엇인가 - MySQL이 행 하나가 아니라 범위까지 잠그는 이유]]
+- 입문글 다시 보기: [[01-왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
+
 ## 참고 자료
 
 - [MySQL 8.4 Reference Manual - InnoDB Locking](https://dev.mysql.com/doc/refman/8.4/en/innodb-locking.html)
