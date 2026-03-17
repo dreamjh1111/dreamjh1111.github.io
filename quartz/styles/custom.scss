@@ -31,7 +31,7 @@
 
 :root[saved-theme="dark"] .page > #quartz-body {
   .sidebar.left {
-    background: #0f1115;
+    background: transparent;
     border-right: 1px solid #2a2f38;
   }
 
@@ -130,6 +130,12 @@ hr {
       backdrop-filter: none;
       padding: 1.35rem 0.95rem 1.2rem;
       gap: 0.7rem;
+    }
+
+    :root[saved-theme="dark"] & .sidebar.left {
+      background: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
     }
   }
 
@@ -315,6 +321,7 @@ hr {
       white-space: nowrap;
       line-height: 1.1;
       font-size: 0.92rem;
+      max-width: 100%;
     }
 
     .sidebar.left > .flex-component {
@@ -338,9 +345,10 @@ hr {
 
     .sidebar.left .search > .search-button {
       min-width: 0;
-      height: 2.1rem;
-      padding-right: 0.55rem;
-      padding-left: 0.55rem;
+      height: 2rem;
+      padding-right: 0.42rem;
+      padding-left: 0.42rem;
+      border-radius: 10px;
     }
 
     .sidebar.left .readermode {
