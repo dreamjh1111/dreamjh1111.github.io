@@ -5,10 +5,9 @@ socialDescription: "GitHub Discussions 기반 댓글 시스템 Giscus의 선택 
 date: "2026-03-07T00:00:06+09:00"
 tags:
   - quartz
-  - comments
   - giscus
-  - github-discussions
   - blog
+  - github
   - ko-kr
 ---
 

@@ -8,10 +8,8 @@ tags:
   - ai
   - openclaw
   - google-workspace
-  - gmail
-  - calendar
-  - drive
   - automation
+  - productivity
   - ko-kr
 ---
 

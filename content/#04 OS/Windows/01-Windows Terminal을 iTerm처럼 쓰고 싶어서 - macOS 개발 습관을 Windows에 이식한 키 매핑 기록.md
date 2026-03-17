@@ -6,11 +6,9 @@ date: 2026-03-10T21:20:00+09:00
 draft: false
 tags:
   - windows
-  - windows-terminal
-  - iterm
-  - keybinding
-  - productivity
   - terminal
+  - productivity
+  - os
   - ko-kr
 ---
 

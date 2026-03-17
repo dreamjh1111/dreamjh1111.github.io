@@ -5,9 +5,8 @@ socialDescription: Google 공식 문서와 국내외 기술블로그 사례를 �
 date: "2026-03-06T00:00:02+09:00"
 tags:
   - seo
-  - technical-seo
   - search-console
-  - content-strategy
+  - blog
   - ko-kr
 ---
 
