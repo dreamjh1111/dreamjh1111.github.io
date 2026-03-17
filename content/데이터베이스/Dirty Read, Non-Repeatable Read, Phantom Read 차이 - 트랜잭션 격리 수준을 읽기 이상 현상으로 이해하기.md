@@ -17,7 +17,7 @@ tags:
   - ko-kr
 ---
 
-앞선 글에서 [[04-Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]]를 정리하면서, 같은 트랜잭션 안에서도 읽기 결과가 왜 흔들리거나 유지되는지 감각을 먼저 잡았다.
+앞선 글에서 [[Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]]를 정리하면서, 같은 트랜잭션 안에서도 읽기 결과가 왜 흔들리거나 유지되는지 감각을 먼저 잡았다.
 
 그다음에 자연스럽게 따라오는 질문이 있다.
 
@@ -224,7 +224,7 @@ MySQL 문서는 `Repeatable Read`를 기본 격리 수준으로 설명하고, �
 
 즉, `Repeatable Read면 팬텀이 무조건 그대로 발생한다`고 단정하기보다, **MySQL은 MVCC와 range lock 계열 메커니즘이 함께 작동한다**고 이해하는 편이 정확하다.
 
-이 부분은 이미 [[04-Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]], [[08-Next-Key Lock이란 무엇인가 - MySQL이 행 하나가 아니라 범위까지 잠그는 이유]], [[07-Gap Lock이란 무엇인가 - MySQL이 아직 없는 값까지 잠그는 이유]]에서 이어서 본 흐름과 연결된다.
+이 부분은 이미 [[Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]], [[Next-Key Lock이란 무엇인가 - MySQL이 행 하나가 아니라 범위까지 잠그는 이유]], [[Gap Lock이란 무엇인가 - MySQL이 아직 없는 값까지 잠그는 이유]]에서 이어서 본 흐름과 연결된다.
 
 ### PostgreSQL에서는
 
@@ -309,9 +309,9 @@ PostgreSQL 문서는 격리 수준 표를 명확하게 제시하면서, `Repeata
 
 ## 함께 읽기
 - 시리즈 전체 보기: [[index]]
-- 이전 글: [[04-Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]]
-- 다음 글: [[06-Lost Update란 무엇인가 - 트랜잭션이 있어도 데이터가 덮어써지는 이유]]
-- 입문글 다시 보기: [[01-왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
+- 이전 글: [[Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]]
+- 다음 글: [[Lost Update란 무엇인가 - 트랜잭션이 있어도 데이터가 덮어써지는 이유]]
+- 입문글 다시 보기: [[왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
 
 ## 참고 자료
 

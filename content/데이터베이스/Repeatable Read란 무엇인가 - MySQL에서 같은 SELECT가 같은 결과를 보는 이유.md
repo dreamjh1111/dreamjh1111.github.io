@@ -236,9 +236,9 @@ sequenceDiagram
 
 ## 함께 읽기
 - 시리즈 전체 보기: [[index]]
-- 이전 글: [[03-MVCC란 무엇인가 - 왜 락을 덜 걸어도 읽기가 되는가]]
-- 다음 글: [[05-Dirty Read, Non-Repeatable Read, Phantom Read 차이 - 트랜잭션 격리 수준을 읽기 이상 현상으로 이해하기]]
-- 입문글 다시 보기: [[01-왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
+- 이전 글: [[MVCC란 무엇인가 - 왜 락을 덜 걸어도 읽기가 되는가]]
+- 다음 글: [[Dirty Read, Non-Repeatable Read, Phantom Read 차이 - 트랜잭션 격리 수준을 읽기 이상 현상으로 이해하기]]
+- 입문글 다시 보기: [[왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
 
 ## 참고 자료
 

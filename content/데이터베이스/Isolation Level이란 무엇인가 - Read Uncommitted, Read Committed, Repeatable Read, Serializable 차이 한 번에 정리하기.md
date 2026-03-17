@@ -17,7 +17,7 @@ tags:
   - ko-kr
 ---
 
-앞선 글에서 [[03-MVCC란 무엇인가 - 왜 락을 덜 걸어도 읽기가 되는가]], [[04-Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]], [[05-Dirty Read, Non-Repeatable Read, Phantom Read 차이 - 트랜잭션 격리 수준을 읽기 이상 현상으로 이해하기]]를 따로 떼어 정리했다.
+앞선 글에서 [[MVCC란 무엇인가 - 왜 락을 덜 걸어도 읽기가 되는가]], [[Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]], [[Dirty Read, Non-Repeatable Read, Phantom Read 차이 - 트랜잭션 격리 수준을 읽기 이상 현상으로 이해하기]]를 따로 떼어 정리했다.
 
 그런데 실제로 공부하다 보면 결국 다시 한 질문으로 모인다.
 
@@ -492,8 +492,8 @@ Isolation Level은 면접 단골 개념이기도 하지만, 실제로는 `왜 �
 
 ## 함께 읽기
 - 시리즈 전체 보기: [[index]]
-- 이전 글: [[08-Next-Key Lock이란 무엇인가 - MySQL이 행 하나가 아니라 범위까지 잠그는 이유]]
-- 입문글 다시 보기: [[01-왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
+- 이전 글: [[Next-Key Lock이란 무엇인가 - MySQL이 행 하나가 아니라 범위까지 잠그는 이유]]
+- 입문글 다시 보기: [[왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
 
 ## 참고 자료
 

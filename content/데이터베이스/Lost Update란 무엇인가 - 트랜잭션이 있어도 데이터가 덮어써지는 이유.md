@@ -301,11 +301,11 @@ WHERE id = 1 AND version = 3;
 
 지금까지 시리즈 흐름을 다시 보면 다음처럼 이어진다.
 
-- [[01-왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
-- [[04-Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]]
-- [[08-Next-Key Lock이란 무엇인가 - MySQL이 행 하나가 아니라 범위까지 잠그는 이유]]
-- [[07-Gap Lock이란 무엇인가 - MySQL이 아직 없는 값까지 잠그는 이유]]
-- [[02-MySQL, Aurora MySQL, PostgreSQL은 무엇이 다를까 - 탄생 배경부터 구조와 선택 기준까지]]
+- [[왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
+- [[Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]]
+- [[Next-Key Lock이란 무엇인가 - MySQL이 행 하나가 아니라 범위까지 잠그는 이유]]
+- [[Gap Lock이란 무엇인가 - MySQL이 아직 없는 값까지 잠그는 이유]]
+- [[MySQL, Aurora MySQL, PostgreSQL은 무엇이 다를까 - 탄생 배경부터 구조와 선택 기준까지]]
 
 앞선 글들이 `MVCC`, `Repeatable Read`, 락 범위를 이해하는 데 초점이 있었다면, 이번 글은 그 위에서 실무 사고를 한 단계 더 밀어붙인 셈이다.  
 즉, **읽기가 일관적이라는 것과 쓰기 충돌이 안전하다는 것은 다르다**는 점을 분리해서 보는 단계다.
@@ -329,9 +329,9 @@ WHERE id = 1 AND version = 3;
 
 ## 함께 읽기
 - 시리즈 전체 보기: [[index]]
-- 이전 글: [[05-Dirty Read, Non-Repeatable Read, Phantom Read 차이 - 트랜잭션 격리 수준을 읽기 이상 현상으로 이해하기]]
-- 다음 글: [[07-Gap Lock이란 무엇인가 - MySQL이 아직 없는 값까지 잠그는 이유]]
-- 입문글 다시 보기: [[01-왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
+- 이전 글: [[Dirty Read, Non-Repeatable Read, Phantom Read 차이 - 트랜잭션 격리 수준을 읽기 이상 현상으로 이해하기]]
+- 다음 글: [[Gap Lock이란 무엇인가 - MySQL이 아직 없는 값까지 잠그는 이유]]
+- 입문글 다시 보기: [[왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
 
 ## 참고 자료
 

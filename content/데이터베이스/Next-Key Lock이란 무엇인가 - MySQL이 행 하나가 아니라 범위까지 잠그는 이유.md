@@ -229,9 +229,9 @@ sequenceDiagram
 
 ## 함께 읽기
 - 시리즈 전체 보기: [[index]]
-- 이전 글: [[07-Gap Lock이란 무엇인가 - MySQL이 아직 없는 값까지 잠그는 이유]]
-- 다음 글: [[09-Isolation Level이란 무엇인가 - Read Uncommitted, Read Committed, Repeatable Read, Serializable 차이 한 번에 정리하기]]
-- 입문글 다시 보기: [[01-왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
+- 이전 글: [[Gap Lock이란 무엇인가 - MySQL이 아직 없는 값까지 잠그는 이유]]
+- 다음 글: [[Isolation Level이란 무엇인가 - Read Uncommitted, Read Committed, Repeatable Read, Serializable 차이 한 번에 정리하기]]
+- 입문글 다시 보기: [[왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
 
 ## 참고 자료
 

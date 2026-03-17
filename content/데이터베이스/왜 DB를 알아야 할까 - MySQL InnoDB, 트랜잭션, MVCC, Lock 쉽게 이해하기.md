@@ -256,8 +256,8 @@ DB를 공부하는 이유도 결국 여기에 있다.
 
 ## 함께 읽기
 - 시리즈 전체 보기: [[index]]
-- 다음 글: [[02-MySQL, Aurora MySQL, PostgreSQL은 무엇이 다를까 - 탄생 배경부터 구조와 선택 기준까지]]
-- 추천 시작 경로: [[02-MySQL, Aurora MySQL, PostgreSQL은 무엇이 다를까 - 탄생 배경부터 구조와 선택 기준까지]]
+- 다음 글: [[MySQL, Aurora MySQL, PostgreSQL은 무엇이 다를까 - 탄생 배경부터 구조와 선택 기준까지]]
+- 추천 시작 경로: [[MySQL, Aurora MySQL, PostgreSQL은 무엇이 다를까 - 탄생 배경부터 구조와 선택 기준까지]]
 
 ## 참고 자료
 

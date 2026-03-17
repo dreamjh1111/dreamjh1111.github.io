@@ -16,7 +16,7 @@ tags:
   - ko-kr
 ---
 
-앞선 글에서 [[01-왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]와 [[02-MySQL, Aurora MySQL, PostgreSQL은 무엇이 다를까 - 탄생 배경부터 구조와 선택 기준까지]]를 먼저 정리했다.
+앞선 글에서 [[왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]와 [[MySQL, Aurora MySQL, PostgreSQL은 무엇이 다를까 - 탄생 배경부터 구조와 선택 기준까지]]를 먼저 정리했다.
 
 이제 그 흐름에서 가장 먼저 잡아야 할 핵심 개념이 있다.
 
@@ -244,7 +244,7 @@ sequenceDiagram
 2. `FOR UPDATE`를 하는 순간 현재 레코드와 락 기준으로 본다
 3. 그래서 방금 본 값과 다른 세계가 나타난다
 
-이 부분이 [[04-Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]]에서 특히 많이 헷갈리는 지점이다.
+이 부분이 [[Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]]에서 특히 많이 헷갈리는 지점이다.
 
 ## 6. MySQL과 PostgreSQL의 차이는 어디서 체감될까
 
@@ -361,9 +361,9 @@ MVCC 기반 일반 조회는 `일관된 값`일 수는 있어도 `현재 최신�
 
 ## 함께 읽기
 - 시리즈 전체 보기: [[index]]
-- 이전 글: [[02-MySQL, Aurora MySQL, PostgreSQL은 무엇이 다를까 - 탄생 배경부터 구조와 선택 기준까지]]
-- 다음 글: [[04-Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]]
-- 입문글 다시 보기: [[01-왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
+- 이전 글: [[MySQL, Aurora MySQL, PostgreSQL은 무엇이 다를까 - 탄생 배경부터 구조와 선택 기준까지]]
+- 다음 글: [[Repeatable Read란 무엇인가 - MySQL에서 같은 SELECT가 같은 결과를 보는 이유]]
+- 입문글 다시 보기: [[왜 DB를 알아야 할까 - MySQL InnoDB, 트랜잭션, MVCC, Lock 쉽게 이해하기]]
 
 ## 참고 자료
 
