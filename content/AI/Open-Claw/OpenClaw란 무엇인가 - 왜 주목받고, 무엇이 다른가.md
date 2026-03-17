@@ -8,9 +8,8 @@ draft: false
 tags:
   - ai
   - openclaw
-  - agent
   - self-hosted
-  - intro
+  - automation
   - ko-kr
 ---
 

@@ -10,7 +10,7 @@ tags:
   - mysql
   - innodb
   - transaction
-  - backend
+  - concurrency
   - ko-kr
 ---
 

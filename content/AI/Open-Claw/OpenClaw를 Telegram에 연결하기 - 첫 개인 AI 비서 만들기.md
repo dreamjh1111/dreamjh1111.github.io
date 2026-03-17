@@ -9,7 +9,6 @@ tags:
   - ai
   - openclaw
   - telegram
-  - botfather
   - self-hosted
   - setup
   - ko-kr

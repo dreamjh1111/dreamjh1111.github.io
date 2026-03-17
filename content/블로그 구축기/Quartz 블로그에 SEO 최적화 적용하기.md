@@ -6,9 +6,9 @@ date: "2026-03-06T00:00:03+09:00"
 navOrder: 3
 tags:
   - seo
-  - technical-seo
   - quartz
-  - json-ld
+  - search-console
+  - blog
   - ko-kr
 ---
 
