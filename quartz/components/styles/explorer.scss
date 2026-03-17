@@ -349,9 +349,9 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
 
     .explorer-content {
       box-sizing: border-box;
-      z-index: 100;
+      z-index: 90;
       position: fixed;
-      top: 0;
+      top: calc(4.15rem + env(safe-area-inset-top, 0px));
       left: 0;
       margin-top: 0;
       background-color: var(--light);
@@ -361,14 +361,11 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
       transition:
         transform 200ms ease,
         visibility 200ms ease;
-      overflow: hidden;
-      padding:
-        calc(4.75rem + env(safe-area-inset-top, 0px))
-        1rem
-        2rem
-        calc(1rem + 3.15rem);
-      height: 100dvh;
-      max-height: 100dvh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 0.8rem 1rem 2rem 1rem;
+      height: calc(100dvh - (4.15rem + env(safe-area-inset-top, 0px)));
+      max-height: calc(100dvh - (4.15rem + env(safe-area-inset-top, 0px)));
       visibility: hidden;
     }
 

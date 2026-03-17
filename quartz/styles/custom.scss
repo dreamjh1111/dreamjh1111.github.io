@@ -304,8 +304,9 @@ hr {
     .sidebar.left > .explorer {
       grid-column: 1;
       grid-row: 1;
-      align-self: start;
+      align-self: center;
       margin: 0;
+      z-index: 101;
     }
 
     .sidebar.left > .page-title {
@@ -313,6 +314,8 @@ hr {
       grid-row: 1;
       min-width: 0;
       align-self: center;
+      z-index: 101;
+      position: relative;
     }
 
     .sidebar.left > .page-title a {
@@ -333,6 +336,8 @@ hr {
       gap: 0.3rem;
       transform: scale(0.94);
       transform-origin: right center;
+      z-index: 101;
+      position: relative;
     }
 
     .sidebar.left > .mobile-only {
