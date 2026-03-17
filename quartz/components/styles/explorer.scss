@@ -104,6 +104,12 @@ button.desktop-explorer {
   display: flex;
   align-items: center;
 
+  &.desktop-explorer {
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--lightgray) 80%, transparent);
+    margin-bottom: 0.4rem;
+  }
+
   & h2 {
     font-size: 1rem;
     display: inline-block;
@@ -124,16 +130,35 @@ button.desktop-explorer {
 
     &.explorer-ul {
       overscroll-behavior: contain;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
     }
 
     & li > a {
       color: var(--dark);
-      opacity: 0.75;
+      opacity: 0.82;
       pointer-events: all;
+      display: block;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      padding: 0.4rem 0.55rem;
+      border-radius: 0.6rem;
+      transition:
+        background-color 0.18s ease,
+        color 0.18s ease,
+        opacity 0.18s ease;
+
+      &:hover {
+        background: color-mix(in srgb, var(--lightgray) 70%, transparent);
+        opacity: 1;
+      }
 
       &.active {
         opacity: 1;
         color: var(--tertiary);
+        background: color-mix(in srgb, var(--tertiary) 10%, transparent);
+        font-weight: $semiBoldWeight;
       }
     }
   }
@@ -154,10 +179,25 @@ button.desktop-explorer {
 
   .folder-outer > ul {
     overflow: hidden;
-    margin-left: 6px;
-    padding-left: 0.8rem;
-    border-left: 1px solid var(--lightgray);
+    margin-left: 8px;
+    margin-top: 0.1rem;
+    padding-left: 0.85rem;
+    border-left: 1px solid color-mix(in srgb, var(--secondary) 18%, var(--lightgray));
   }
+}
+
+.explorer-folder-item {
+  > .folder-container {
+    position: relative;
+  }
+}
+
+.explorer-folder-item + .explorer-folder-item {
+  margin-top: 0.2rem;
+}
+
+.explorer-file-item {
+  margin: 0.05rem 0;
 }
 
 .folder-container {
@@ -165,14 +205,18 @@ button.desktop-explorer {
   display: flex;
   align-items: center;
   user-select: none;
+  padding: 0.15rem 0.1rem;
+  margin-top: 0.25rem;
 
   & div > a {
     color: var(--secondary);
     font-family: var(--headerFont);
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: $semiBoldWeight;
     line-height: 1.5rem;
     display: inline-block;
+    padding: 0.18rem 0.2rem;
+    border-radius: 0.45rem;
   }
 
   & div > a:hover {
@@ -185,14 +229,18 @@ button.desktop-explorer {
     border: none;
     text-align: left;
     cursor: pointer;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0.18rem 0.2rem;
     display: flex;
     align-items: center;
     font-family: var(--headerFont);
+    border-radius: 0.45rem;
+
+    &:hover {
+      background: color-mix(in srgb, var(--lightgray) 65%, transparent);
+    }
 
     & span {
-      font-size: 0.95rem;
+      font-size: 1rem;
       display: inline-block;
       color: var(--secondary);
       font-weight: $semiBoldWeight;

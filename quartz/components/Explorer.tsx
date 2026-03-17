@@ -112,12 +112,12 @@ export default ((userOpts?: Partial<Options>) => {
           <OverflowList class="explorer-ul" />
         </div>
         <template id="template-file">
-          <li>
+          <li class="explorer-file-item">
             <a href="#"></a>
           </li>
         </template>
         <template id="template-folder">
-          <li>
+          <li class="explorer-folder-item">
             <div class="folder-container">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
