@@ -15,12 +15,21 @@ export default (() => {
     ctx,
   }: QuartzComponentProps) => {
     const titleSuffix = cfg.pageTitleSuffix ?? ""
-    const title =
-      (fileData.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title) + titleSuffix
+    const slug = fileData.slug ?? ""
+    const isHome = slug === "index"
+    const isTagPage = slug === "tags/index" || slug.startsWith("tags/")
+    const isFolderIndexPage = slug.endsWith("/index") && !isTagPage
+    const baseTitle = fileData.frontmatter?.title ?? i18n(cfg.locale).propertyDefaults.title
+    const title = (baseTitle ?? i18n(cfg.locale).propertyDefaults.title) + titleSuffix
+    const fallbackDescription = isTagPage
+      ? `${baseTitle} 관련 글을 모아볼 수 있는 태그 페이지`
+      : isFolderIndexPage
+        ? `${baseTitle} 주제의 글을 모아볼 수 있는 카테고리 페이지`
+        : i18n(cfg.locale).propertyDefaults.description
     const description =
       fileData.frontmatter?.socialDescription ??
       fileData.frontmatter?.description ??
-      unescapeHTML(fileData.description?.trim() ?? i18n(cfg.locale).propertyDefaults.description)
+      unescapeHTML(fileData.description?.trim() ?? fallbackDescription)
 
     const { css, js, additionalHead } = externalResources
 
@@ -30,13 +39,16 @@ export default (() => {
     const iconPath = joinSegments(baseDir, "static/icon.png")
 
     // Url of current page
-    const socialUrl =
-      fileData.slug === "404" ? url.toString() : joinSegments(url.toString(), fileData.slug!)
+    const canonicalPath = isHome
+      ? ""
+      : slug.endsWith("/index")
+        ? `${slug.slice(0, -"/index".length)}/`
+        : slug
+
+    const socialUrl = fileData.slug === "404" ? url.toString() : joinSegments(url.toString(), canonicalPath)
 
     // Canonical URL
-    const canonicalUrl = cfg.baseUrl
-      ? `https://${cfg.baseUrl}/${fileData.slug === "index" ? "" : fileData.slug}`
-      : undefined
+    const canonicalUrl = cfg.baseUrl ? `https://${cfg.baseUrl}/${canonicalPath}` : undefined
 
     const usesCustomOgImage = ctx.cfg.plugins.emitters.some(
       (e) => e.name === CustomOgImagesEmitterName,
@@ -46,8 +58,7 @@ export default (() => {
     // JSON-LD structured data
     const datePublished = getDate(cfg, fileData)
     const dateModified = fileData.dates?.modified
-    const slug = fileData.slug ?? ""
-    const isPost = slug !== "index" && slug !== "404"
+    const isPost = slug !== "index" && slug !== "404" && !isTagPage && !isFolderIndexPage
     const jsonLd = isPost
       ? JSON.stringify({
           "@context": "https://schema.org",
