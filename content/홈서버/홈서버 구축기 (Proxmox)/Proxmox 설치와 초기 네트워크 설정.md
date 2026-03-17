@@ -1,5 +1,5 @@
 ---
-title: 홈서버 구축기 (Proxmox)
+title: Proxmox 설치와 초기 네트워크 설정
 description: Proxmox 설치와 기본 네트워크 및 도메인 연결 설정 과정을 정리한 글
 socialDescription: Proxmox 설치부터 기본 설정, 도메인 연결까지 홈서버 초기 셋업 과정을 기록
 date: "2026-03-07T00:00:02+09:00"

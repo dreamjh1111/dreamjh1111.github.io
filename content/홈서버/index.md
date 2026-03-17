@@ -23,7 +23,7 @@ tags:
 
 ## 먼저 보면 좋은 글
 - [[왜 홈서버를 만들었고 Proxmox를 선택했는가]]
-- [[HTTPS & NGINX Proxy Manager]]
+- [[HTTPS와 NGINX Proxy Manager로 홈서버 외부 공개하기]]
 
 ## 함께 보면 좋은 카테고리
 - [[OS]]: 운영체제 설정과 트러블슈팅

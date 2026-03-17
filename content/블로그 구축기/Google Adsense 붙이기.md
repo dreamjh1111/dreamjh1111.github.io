@@ -1,5 +1,5 @@
 ---
-title: Google Adsense 붙이기
+title: Google AdSense 붙이기
 draft: true
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 홈서버 구축기 (Proxmox)
+title: Windows 11 VM 생성과 테스트
 description: Proxmox에서 Windows 11 VM 생성과 테스트 경험을 정리한 글
 socialDescription: Proxmox 환경에서 Windows 11 가상머신을 생성하고 사용한 과정을 기록
 date: "2026-03-07T00:00:03+09:00"

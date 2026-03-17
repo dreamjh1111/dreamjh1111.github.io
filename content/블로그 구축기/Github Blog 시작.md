@@ -1,5 +1,5 @@
 ---
-title: Github Blog 시작
+title: GitHub Pages와 Quartz로 블로그 시작하기
 description: GitHub Pages + Quartz + GitHub Actions 기반으로 개인 기술 블로그를 시작
 date: "2026-03-04T00:00:01+09:00"
 navOrder: 1

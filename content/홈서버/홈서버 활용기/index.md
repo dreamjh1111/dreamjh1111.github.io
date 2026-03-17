@@ -13,7 +13,7 @@ tags:
 구축한 홈서버를 실제 서비스 운영에 활용하는 방법을 정리한 시리즈입니다.
 
 ## 현재 포함된 글
-- [[HTTPS & NGINX Proxy Manager]]
+- [[HTTPS와 NGINX Proxy Manager로 홈서버 외부 공개하기]]
 
 ## 앞으로 확장하기 좋은 주제
 - 리버스 프록시 운영

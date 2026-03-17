@@ -33,7 +33,7 @@ Jayden Tech Blog는 **직접 부딪히며 쌓은 기술 기록을 실무형 글�
 
 ### 블로그 구축기
 - [[블로그 구축기]]
-- 입문 추천: [[Github Blog 시작]]
+- 입문 추천: [[GitHub Pages와 Quartz로 블로그 시작하기]]
 
 ### OS / 개발 환경
 - [[OS]]

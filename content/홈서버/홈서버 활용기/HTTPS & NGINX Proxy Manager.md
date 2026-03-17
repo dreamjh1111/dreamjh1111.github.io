@@ -1,5 +1,5 @@
 ---
-title: HTTPS & NGINX Proxy Manager
+title: HTTPS와 NGINX Proxy Manager로 홈서버 외부 공개하기
 description: 홈서버에서 HTTPS와 NGINX Proxy Manager를 구성하는 흐름을 정리한 글
 socialDescription: 도메인, DNS, 공인 IP, 공유기, 포트포워딩, NGINX Proxy Manager까지 홈서버 HTTPS 연결 구조 정리
 date: 2026-03-09T20:58:04+09:00
