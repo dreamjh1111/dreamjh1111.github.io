@@ -31,7 +31,8 @@
 
 :root[saved-theme="dark"] .page > #quartz-body {
   .sidebar.left {
-    background: color-mix(in srgb, #1b1d21 94%, transparent);
+    background: #0f1115;
+    border-right: 1px solid #2a2f38;
   }
 
   .search > .search-button,
@@ -42,6 +43,12 @@
   .sidebar.right > .graph,
   .home-post-card {
     background-color: var(--surface-1);
+  }
+
+  .desktop-explorer,
+  .desktop-explorer h2,
+  .page-title a {
+    color: #f5f7fa;
   }
 
   blockquote {
@@ -216,6 +223,26 @@ hr {
 
     .folder-outer > ul {
       border-left-color: #dee2e6;
+    }
+  }
+
+  :root[saved-theme="dark"] & {
+    .explorer-content ul li > a {
+      color: #c7d0da;
+
+      &:hover {
+        background: #1f232b;
+        color: #f5f7fa;
+      }
+
+      &.active {
+        color: #8ab4ff;
+        background: rgba(138, 180, 255, 0.16);
+      }
+    }
+
+    .explorer-content .folder-outer > ul {
+      border-left-color: #2f3742;
     }
   }
 

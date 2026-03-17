@@ -228,6 +228,11 @@ button.desktop-explorer {
     border-radius: 0.3rem;
   }
 
+  :root[saved-theme="dark"] & div > a,
+  :root[saved-theme="dark"] & div > .folder-link {
+    color: #e5e7eb;
+  }
+
   & div > a:hover,
   & div > .folder-link:hover {
     color: var(--tertiary);
@@ -269,6 +274,16 @@ button.desktop-explorer {
     }
   }
 
+  :root[saved-theme="dark"] & div > button {
+    &:hover {
+      background: #1f232b;
+    }
+
+    & span {
+      color: #e5e7eb;
+    }
+  }
+
   .folder-count {
     margin-left: auto;
     min-width: 1.02rem;
@@ -283,6 +298,12 @@ button.desktop-explorer {
     color: #6c757d;
     background: #f1f3f5;
     border: 1px solid #dee2e6;
+  }
+
+  :root[saved-theme="dark"] & .folder-count {
+    color: #c7d0da;
+    background: #1b1f27;
+    border-color: #313845;
   }
 }
 
