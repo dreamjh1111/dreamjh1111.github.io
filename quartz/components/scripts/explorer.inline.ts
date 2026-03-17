@@ -96,6 +96,11 @@ function createFileNode(currentSlug: FullSlug, node: FileTrieNode): HTMLLIElemen
   return li
 }
 
+function countLeafFiles(node: FileTrieNode): number {
+  if (!node.isFolder) return 1
+  return node.children.reduce((sum, child) => sum + countLeafFiles(child), 0)
+}
+
 function createFolderNode(
   currentSlug: FullSlug,
   node: FileTrieNode,
@@ -116,18 +121,32 @@ function createFolderNode(
     folderContainer.classList.add("active")
   }
 
+  const itemCount = countLeafFiles(node)
+
   if (opts.folderClickBehavior === "link") {
     // Replace button with link for link behavior
     const button = titleContainer.querySelector(".folder-button") as HTMLElement
-    const a = document.createElement("a")
-    a.href = resolveRelative(currentSlug, folderPath)
-    a.dataset.for = folderPath
-    a.className = "folder-title"
-    a.textContent = node.displayName
-    button.replaceWith(a)
+    const wrapper = document.createElement("a")
+    wrapper.href = resolveRelative(currentSlug, folderPath)
+    wrapper.dataset.for = folderPath
+    wrapper.className = "folder-link"
+
+    const title = document.createElement("span")
+    title.className = "folder-title"
+    title.textContent = node.displayName
+
+    const count = document.createElement("span")
+    count.className = "folder-count"
+    count.textContent = String(itemCount)
+
+    wrapper.appendChild(title)
+    wrapper.appendChild(count)
+    button.replaceWith(wrapper)
   } else {
     const span = titleContainer.querySelector(".folder-title") as HTMLElement
+    const count = titleContainer.querySelector(".folder-count") as HTMLElement
     span.textContent = node.displayName
+    count.textContent = String(itemCount)
   }
 
   // if the saved state is collapsed or the default state is collapsed
