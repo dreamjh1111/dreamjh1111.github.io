@@ -24,6 +24,7 @@ let currentExplorerState: Array<FolderState>
 function toggleExplorer(this: HTMLElement) {
   const nearestExplorer = this.closest(".explorer") as HTMLElement
   if (!nearestExplorer) return
+  const quartzBody = document.getElementById("quartz-body") as MaybeHTMLElement
   const explorerCollapsed = nearestExplorer.classList.toggle("collapsed")
   nearestExplorer.setAttribute(
     "aria-expanded",
@@ -33,8 +34,10 @@ function toggleExplorer(this: HTMLElement) {
   if (!explorerCollapsed) {
     // Stop <html> from being scrollable when mobile explorer is open
     document.documentElement.classList.add("mobile-no-scroll")
+    quartzBody?.classList.add("lock-scroll")
   } else {
     document.documentElement.classList.remove("mobile-no-scroll")
+    quartzBody?.classList.remove("lock-scroll")
   }
 }
 
