@@ -287,11 +287,11 @@ hr {
     .sidebar.left {
       display: grid;
       grid-template-columns: auto minmax(0, 1fr) auto;
-      align-items: start;
-      column-gap: 0.75rem;
-      row-gap: 0.75rem;
+      align-items: center;
+      column-gap: 0.45rem;
+      row-gap: 0.45rem;
       width: 100%;
-      padding-top: 1.25rem;
+      padding-top: 0.95rem;
     }
 
     .sidebar.left > .explorer {
@@ -310,15 +310,21 @@ hr {
 
     .sidebar.left > .page-title a {
       display: block;
-      overflow-wrap: anywhere;
-      line-height: 1.15;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 1.1;
+      font-size: 0.92rem;
     }
 
     .sidebar.left > .flex-component {
       grid-column: 3;
       grid-row: 1;
-      align-self: start;
+      align-self: center;
       min-width: max-content;
+      gap: 0.3rem;
+      transform: scale(0.94);
+      transform-origin: right center;
     }
 
     .sidebar.left > .mobile-only {
@@ -327,11 +333,14 @@ hr {
 
     .sidebar.left .search {
       min-width: 0;
-      max-width: 7.5rem;
+      max-width: 5.2rem;
     }
 
     .sidebar.left .search > .search-button {
-      padding-right: 0.75rem;
+      min-width: 0;
+      height: 2.1rem;
+      padding-right: 0.55rem;
+      padding-left: 0.55rem;
     }
 
     .sidebar.left .readermode {
