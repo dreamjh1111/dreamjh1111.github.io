@@ -87,7 +87,21 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      sortFn: (a, b) => {
+        const aOrder = a.data?.order
+        const bOrder = b.data?.order
+
+        if (typeof aOrder === "number" && typeof bOrder === "number") return aOrder - bOrder
+        if (typeof aOrder === "number") return -1
+        if (typeof bOrder === "number") return 1
+
+        return a.displayName.localeCompare(b.displayName, undefined, {
+          numeric: true,
+          sensitivity: "base",
+        })
+      },
+    }),
   ],
   right: [
     Component.ConditionalRender({
@@ -113,7 +127,21 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.Explorer(),
+    Component.Explorer({
+      sortFn: (a, b) => {
+        const aOrder = a.data?.order
+        const bOrder = b.data?.order
+
+        if (typeof aOrder === "number" && typeof bOrder === "number") return aOrder - bOrder
+        if (typeof aOrder === "number") return -1
+        if (typeof bOrder === "number") return 1
+
+        return a.displayName.localeCompare(b.displayName, undefined, {
+          numeric: true,
+          sensitivity: "base",
+        })
+      },
+    }),
   ],
   right: [],
 }
