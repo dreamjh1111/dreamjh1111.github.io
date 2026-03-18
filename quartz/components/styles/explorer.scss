@@ -38,16 +38,6 @@
   &.collapsed {
     flex: 0 0 auto;
     min-height: 2rem;
-
-    & .fold {
-      transform: rotateZ(-90deg);
-    }
-  }
-
-  & .fold {
-    margin-left: 0.5rem;
-    transition: transform 0.3s ease;
-    opacity: 0.8;
   }
 
   @media all and ($mobile) {
@@ -64,7 +54,7 @@
     display: none;
   }
 
-  button.desktop-explorer {
+  .desktop-explorer {
     display: flex;
   }
 
@@ -73,7 +63,7 @@
       display: flex;
     }
 
-    button.desktop-explorer {
+    .desktop-explorer {
       display: none;
     }
   }
@@ -95,11 +85,10 @@
 }
 
 button.mobile-explorer,
-button.desktop-explorer {
+.desktop-explorer {
   background-color: transparent;
   border: none;
   text-align: left;
-  cursor: pointer;
   padding: 0;
   color: var(--dark);
   display: flex;
