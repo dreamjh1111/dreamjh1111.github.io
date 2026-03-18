@@ -160,6 +160,10 @@ export default (() => {
 
         <link rel="icon" href={iconPath} />
         <meta name="description" content={description} />
+        <meta
+          name="naver-site-verification"
+          content="547bf5fadc42804d662804164c772b5915b76566"
+        />
         <meta name="generator" content="Quartz" />
 
         {/* JSON-LD: BlogPosting */}
