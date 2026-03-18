@@ -32,11 +32,12 @@
   flex-direction: column;
   overflow-y: hidden;
 
-  min-height: 1.2rem;
+  min-height: 1.8rem;
   flex: 0 1 auto;
 
   &.collapsed {
-    flex: 0 1 1.2rem;
+    flex: 0 0 auto;
+    min-height: 2rem;
 
     & .fold {
       transform: rotateZ(-90deg);
@@ -105,9 +106,10 @@ button.desktop-explorer {
   align-items: center;
 
   &.desktop-explorer {
-    padding-bottom: 0.35rem;
+    padding-bottom: 0.22rem;
     border-bottom: 1px solid color-mix(in srgb, var(--lightgray) 80%, transparent);
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.28rem;
+    min-height: 1.8rem;
   }
 
   & h2 {
