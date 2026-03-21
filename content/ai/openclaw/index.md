@@ -25,7 +25,8 @@ OpenClaw를 설치하고 실제로 운영 가능한 상태까지 만드는 과�
 4. [[SOUL.md와 MEMORY.md로 OpenClaw 말투와 기억 다듬기]]
 5. [[SOUL.md와 MEMORY.md 베스트 프랙티스 3가지 - 개발, 리서치, 개인 비서형]]
 6. [[OpenClaw 세션 기억이 자꾸 끊길 때 - 파일 기반 운영 메모리로 이어 붙이는 방법]]
-7. [[OpenClaw에 googleworkspace-cli 붙이기 - 설치, 인증, 활용까지 한 번에 정리하기]]
+7. [[OpenClaw 서브에이전트를 어떻게 나눠 써야 할까 - 역할 분리로 운영 팀처럼 굴리는 방법]]
+8. [[OpenClaw에 googleworkspace-cli 붙이기 - 설치, 인증, 활용까지 한 번에 정리하기]]
 
 ## 입문 / 운영 / 확장
 ### 입문
@@ -36,6 +37,7 @@ OpenClaw를 설치하고 실제로 운영 가능한 상태까지 만드는 과�
 - [[OpenClaw를 Telegram에 연결하기 - 첫 개인 AI 비서 만들기]]
 - [[SOUL.md와 MEMORY.md로 OpenClaw 말투와 기억 다듬기]]
 - [[OpenClaw 세션 기억이 자꾸 끊길 때 - 파일 기반 운영 메모리로 이어 붙이는 방법]]
+- [[OpenClaw 서브에이전트를 어떻게 나눠 써야 할까 - 역할 분리로 운영 팀처럼 굴리는 방법]]
 
 ### 확장
 - [[SOUL.md와 MEMORY.md 베스트 프랙티스 3가지 - 개발, 리서치, 개인 비서형]]
